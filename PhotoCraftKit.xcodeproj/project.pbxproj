@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF582B641C06E089007D0ED1 /* UIBezierPathPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FF582B631C06E089007D0ED1 /* UIBezierPathPool.m */; settings = {ASSET_TAGS = (); }; };
 		FF5EB9E11BFC2F7400E2378C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EB9E01BFC2F7400E2378C /* main.m */; };
 		FF5EB9E41BFC2F7400E2378C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EB9E31BFC2F7400E2378C /* AppDelegate.m */; };
 		FF5EB9E71BFC2F7400E2378C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EB9E61BFC2F7400E2378C /* ViewController.m */; };
@@ -15,6 +16,7 @@
 		FF5EB9EF1BFC2F7400E2378C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF5EB9ED1BFC2F7400E2378C /* LaunchScreen.storyboard */; };
 		FF5EB9FA1BFC2F7400E2378C /* PhotoCraftKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EB9F91BFC2F7400E2378C /* PhotoCraftKitTests.m */; };
 		FF5EBA051BFC2F7400E2378C /* PhotoCraftKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA041BFC2F7400E2378C /* PhotoCraftKitUITests.m */; };
+		FF5EBA191BFC77CA00E2378C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA181BFC77CA00E2378C /* SettingViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF582B621C06E089007D0ED1 /* UIBezierPathPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBezierPathPool.h; sourceTree = "<group>"; };
+		FF582B631C06E089007D0ED1 /* UIBezierPathPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBezierPathPool.m; sourceTree = "<group>"; };
 		FF5EB9DC1BFC2F7400E2378C /* PhotoCraftKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCraftKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF5EB9E01BFC2F7400E2378C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FF5EB9E21BFC2F7400E2378C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		FF5EBA001BFC2F7400E2378C /* PhotoCraftKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoCraftKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF5EBA041BFC2F7400E2378C /* PhotoCraftKitUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCraftKitUITests.m; sourceTree = "<group>"; };
 		FF5EBA061BFC2F7400E2378C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF5EBA171BFC77CA00E2378C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		FF5EBA181BFC77CA00E2378C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +116,10 @@
 				FF5EB9ED1BFC2F7400E2378C /* LaunchScreen.storyboard */,
 				FF5EB9F01BFC2F7400E2378C /* Info.plist */,
 				FF5EB9DF1BFC2F7400E2378C /* Supporting Files */,
+				FF5EBA171BFC77CA00E2378C /* SettingViewController.h */,
+				FF5EBA181BFC77CA00E2378C /* SettingViewController.m */,
+				FF582B621C06E089007D0ED1 /* UIBezierPathPool.h */,
+				FF582B631C06E089007D0ED1 /* UIBezierPathPool.m */,
 			);
 			path = PhotoCraftKit;
 			sourceTree = "<group>";
@@ -207,6 +217,7 @@
 				TargetAttributes = {
 					FF5EB9DB1BFC2F7400E2378C = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 3F7786U649;
 					};
 					FF5EB9F41BFC2F7400E2378C = {
 						CreatedOnToolsVersion = 7.0;
@@ -273,6 +284,8 @@
 				FF5EB9E71BFC2F7400E2378C /* ViewController.m in Sources */,
 				FF5EB9E41BFC2F7400E2378C /* AppDelegate.m in Sources */,
 				FF5EB9E11BFC2F7400E2378C /* main.m in Sources */,
+				FF582B641C06E089007D0ED1 /* UIBezierPathPool.m in Sources */,
+				FF5EBA191BFC77CA00E2378C /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,10 +426,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PhotoCraftKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tumblr.appDevTommyHo.PhotoCraftKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -424,10 +441,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PhotoCraftKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tumblr.appDevTommyHo.PhotoCraftKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -498,6 +519,7 @@
 				FF5EBA0B1BFC2F7400E2378C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF5EBA0C1BFC2F7400E2378C /* Build configuration list for PBXNativeTarget "PhotoCraftKitTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +528,7 @@
 				FF5EBA0E1BFC2F7400E2378C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF5EBA0F1BFC2F7400E2378C /* Build configuration list for PBXNativeTarget "PhotoCraftKitUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +537,7 @@
 				FF5EBA111BFC2F7400E2378C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
