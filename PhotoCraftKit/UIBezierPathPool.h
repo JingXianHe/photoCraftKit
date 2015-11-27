@@ -13,4 +13,10 @@
 +(UIBezierPath *)getTrianglePath:(int)sizePickerIndex;
 +(UIBezierPath *)getCirclePath:(int)sizePickerIndex;
 +(UIBezierPath *)getSnowPath:(int)sizePickerIndex;
++(UIBezierPath *)getGearPath:(int)sizePickerIndex;
++(UIBezierPath *)getGiftPath:(int)sizePickerIndex;
++(UIBezierPath *)getMaplePath:(int)sizePickerIndex;
++(UIBezierPath *)getHeartPath:(int)sizePickerIndex;
++(UIBezierPath *)getStarPath:(int)sizePickerIndex;
++(UIBezierPath *)getPawPath:(int)sizePickerIndex;
 @end

@@ -33,14 +33,15 @@
 
 //end
 
-
+@property(weak, nonatomic)UIView *coverView;
 @end
 
 @implementation ViewController
 
 - (IBAction)navigationPressed {
     if (self.navigationBarIsOpen == NO) {
-        
+        _isDrawingZone = NO;
+        _isPatternZone = NO;
         [self.navigationView setNeedsLayout];
         [self.contentView setNeedsLayout];
         self.navigationLeading.constant = 0;
@@ -55,6 +56,7 @@
         }];
 
     }else{
+        
         [self.navigationView setNeedsLayout];
         [self.contentView setNeedsLayout];
         self.navigationLeading.constant = -90.0;
@@ -282,7 +284,27 @@
     }else if (self.pathType == 102) {
         path1  = [UIBezierPathPool getSnowPath:self.sizePickerIndex];
         rect4Offset = path1.bounds;
+    }else if (self.pathType == 103) {
+        path1  = [UIBezierPathPool getGearPath:self.sizePickerIndex];
+        rect4Offset = path1.bounds;
+    }else if (self.pathType == 104) {
+        path1  = [UIBezierPathPool getGiftPath:self.sizePickerIndex];
+        rect4Offset = path1.bounds;
+    }else if (self.pathType == 105) {
+        path1  = [UIBezierPathPool getMaplePath:self.sizePickerIndex];
+        rect4Offset = path1.bounds;
+    }else if (self.pathType == 106) {
+        path1  = [UIBezierPathPool getHeartPath:self.sizePickerIndex];
+        rect4Offset = path1.bounds;
     }
+    else if (self.pathType == 107) {
+        path1  = [UIBezierPathPool getStarPath:self.sizePickerIndex];
+        rect4Offset = path1.bounds;
+    }else if (self.pathType == 108) {
+        path1  = [UIBezierPathPool getPawPath:self.sizePickerIndex];
+        rect4Offset = path1.bounds;
+    }
+    
     CGFloat offsetX = currentPoint.x - rect4Offset.size.width/2;
     CGFloat offsetY = currentPoint.y - rect4Offset.size.height/2;
     
@@ -293,6 +315,7 @@
     if (self.fillOrStrokePickerIndex == 0) {
         CGContextSetBlendMode(context, kCGBlendModeNormal);
         CGContextSetRGBStrokeColor(context, _red, _green, _blue, _opacity);
+        path1.lineWidth = _lineWidth;
         [path1 stroke];
     }else{
         CGContextSetBlendMode(context, kCGBlendModeHardLight);
