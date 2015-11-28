@@ -10,7 +10,7 @@
 #import "SettingViewController.h"
 #import "UIBezierPathPool.h"
 
-@interface ViewController ()<SettingViewControllerDelegate>
+@interface ViewController ()<SettingViewControllerDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property(nonatomic, assign)BOOL navigationBarIsOpen;
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
@@ -18,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationLeading;
 @property (weak, nonatomic) IBOutlet UIImageView *RealImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *TempImageView;
+//photo editting pane
+@property (weak, nonatomic)UIImageView *backupImgView;
+@property (weak, nonatomic)UIImageView *edittingImgView;
+//end
 //context tool bar
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *photoAddEffectHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *drawLinesHeight;
@@ -94,8 +98,66 @@
     self.distance = 30;
     self.lineWidth = 3;
     
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Pick a photo"
+                                                    message:@"Please select a photo for editting"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"OK", nil   ];
+    alert.delegate = self;
+    [alert show];
+}
+#pragma alertView delegates
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // the user clicked one of the OK/Cancel buttons
+    if (buttonIndex == 1)
+    {
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
+        
+        UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+        ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        ipc.delegate = self;
+        [self presentViewController:ipc animated:YES completion:nil];
+        
+        
+    }
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    // 1.取出选中的图片
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    // 2.添加图片到相册中
+    UIImageView *realImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:image]];
+    realImgView.image = image;
+    [self.RealImageView addSubview:realImgView];
+    self.backupImgView = realImgView;
+    
+    UIImageView *tempImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:image]];
+    tempImgView.image = image;
+    [self.TempImageView addSubview:tempImgView];
+    self.edittingImgView = tempImgView;
+    
+}
+
+-(CGRect)imageAdjust4Screen:(UIImage *)img{
+    CGSize tempSize;
+    CGSize imgSize = img.size;
+    CGSize screenSize = self.RealImageView.bounds.size;
+    CGFloat xFactor = imgSize.width/screenSize.width;
+    CGFloat yFactor = imgSize.height/screenSize.height;
+    if (xFactor>yFactor) {
+        tempSize = CGSizeMake(imgSize.width/xFactor, imgSize.height/xFactor);
+    }else{
+        tempSize = CGSizeMake(imgSize.width/yFactor, imgSize.height/yFactor);
+    }
+    CGFloat xOffset = (screenSize.width - tempSize.width)/2;
+    CGFloat yOffset = (screenSize.height - tempSize.height)/2;
+    return CGRectMake(xOffset, yOffset, tempSize.width, tempSize.height);
+}
+#pragma endAlertView Delegate
 -(void)setSizePickerIndex:(int)sizePickerIndex{
     _sizePickerIndex = sizePickerIndex;
     if (sizePickerIndex == 0) {
