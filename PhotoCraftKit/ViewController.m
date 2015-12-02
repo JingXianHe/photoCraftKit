@@ -37,6 +37,13 @@
 
 //end
 
+//right navigation pane right constraint
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightNavigationConstraint;
+@property(nonatomic, assign)BOOL rightNavigationPaneIsOpen;
+@property (weak, nonatomic) IBOutlet UIView *rightNavigationPane;
+
+//end
+
 @property(weak, nonatomic)UIView *coverView;
 @end
 
@@ -97,6 +104,8 @@
     self.size = CGSizeMake(20, 20);
     self.distance = 30;
     self.lineWidth = 3;
+    //set up right navigation pane
+    self.rightNavigationPaneIsOpen = NO;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Pick a photo"
                                                     message:@"Please select a photo for editting"
@@ -132,8 +141,14 @@
     // 2.添加图片到相册中
     UIImageView *realImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:image]];
     realImgView.image = image;
+    if (self.edittingImgView) {
+        [self.edittingImgView removeFromSuperview];
+        [self.backupImgView removeFromSuperview];
+    }
+    
     [self.RealImageView addSubview:realImgView];
     self.backupImgView = realImgView;
+    self.backupImgView.hidden = YES;
     
     UIImageView *tempImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:image]];
     tempImgView.image = image;
@@ -158,6 +173,74 @@
     return CGRectMake(xOffset, yOffset, tempSize.width, tempSize.height);
 }
 #pragma endAlertView Delegate
+//fist panel zone
+- (IBAction)pickPhoto {
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
+    
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    ipc.delegate = self;
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
+
+- (IBAction)photoEffectBtnClick:(UIButton *)sender {
+    if (sender.tag == 300) {
+        CIFilter *sepia = [CIFilter filterWithName:@"CISepiaTone"];
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        [sepia setValue:ref forKey:kCIInputImageKey];
+        [sepia setValue:@0.5f forKey:kCIInputIntensityKey];
+        
+        CIFilter *random = [CIFilter filterWithName:@"CIRandomGenerator"];
+        
+        CIFilter *lighten = [CIFilter filterWithName:@"CIColorControls"];
+        [lighten setValue:random.outputImage forKey:kCIInputImageKey];
+        [lighten setValue:@0.5f forKey:@"inputBrightness"];
+        [lighten setValue:@0.0f forKey:@"inputSaturation"];
+        CIImage *croppedImage = [[lighten outputImage] imageByCroppingToRect:ref.extent];
+        
+        CIFilter *composite = [CIFilter filterWithName:@"CIHardLightBlendMode"];
+        [composite setValue:sepia.outputImage forKey:kCIInputImageKey];
+        [composite setValue:croppedImage forKey:kCIInputBackgroundImageKey];
+        
+        CIFilter *vignette = [CIFilter filterWithName:@"CIVignette"];
+        [vignette setValue:composite.outputImage forKey:kCIInputImageKey];
+        [vignette setValue:@1.0f forKey:@"inputIntensity"];
+        [vignette setValue:@30.0f forKey:@"inputRadius"];
+        
+        
+        CIImage *result = [vignette outputImage];
+        
+        self.edittingImgView.image = [UIImage imageWithCIImage:result];
+    }else if(sender.tag == 301){
+        CIFilter *filter = [CIFilter filterWithName:@"CIFalseColor"];
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        [filter setValue:ref forKey:kCIInputImageKey];
+        [filter setValue:[CIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] forKey:@"inputColor1"];
+        [filter setValue:[CIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] forKey:@"inputColor0"];
+        
+        CIFilter *random = [CIFilter filterWithName:@"CIRandomGenerator"];
+        
+        CIFilter *lighten = [CIFilter filterWithName:@"CIColorControls"];
+        [lighten setValue:random.outputImage forKey:kCIInputImageKey];
+        [lighten setValue:@0.5f forKey:@"inputBrightness"];
+        [lighten setValue:@0.0f forKey:@"inputSaturation"];
+        CIImage *croppedImage = [[lighten outputImage] imageByCroppingToRect:ref.extent];
+        
+        CIFilter *composite = [CIFilter filterWithName:@"CIHardLightBlendMode"];
+        [composite setValue:filter.outputImage forKey:kCIInputImageKey];
+        [composite setValue:croppedImage forKey:kCIInputBackgroundImageKey];
+        
+        CIImage *result = [composite outputImage];
+        
+        self.edittingImgView.image = [UIImage imageWithCIImage:result];
+    }
+}
+
+
+//end
+
+
 -(void)setSizePickerIndex:(int)sizePickerIndex{
     _sizePickerIndex = sizePickerIndex;
     if (sizePickerIndex == 0) {
@@ -453,4 +536,39 @@
 
     
 }
+- (IBAction)rightNavigationBtnPressed {
+    
+    if (self.rightNavigationPaneIsOpen == NO) {
+        
+        [self.rightNavigationPane setNeedsLayout];
+        self.rightNavigationConstraint.constant = 0;
+        self.contentView.userInteractionEnabled = NO;
+        self.rightNavigationPane.userInteractionEnabled = NO;
+        [UIView animateWithDuration:1.8f animations:^{
+            [self.rightNavigationPane layoutIfNeeded];
+            
+        } completion:^(BOOL finished) {
+            self.contentView.userInteractionEnabled = YES;
+            self.rightNavigationPane.userInteractionEnabled = YES;
+        }];
+        
+    }else{
+        
+        [self.rightNavigationPane setNeedsLayout];
+        self.rightNavigationConstraint.constant = -90.0;
+        self.contentView.userInteractionEnabled = NO;
+        self.rightNavigationPane.userInteractionEnabled = NO;
+        [UIView animateWithDuration:1.8f animations:^{
+            [self.rightNavigationPane layoutIfNeeded];
+            
+        } completion:^(BOOL finished) {
+            self.contentView.userInteractionEnabled = YES;
+            self.rightNavigationPane.userInteractionEnabled = YES;
+        }];
+        
+    }
+    self.rightNavigationPaneIsOpen = !self.rightNavigationPaneIsOpen;
+}
+//right navigation panel
+
 @end
