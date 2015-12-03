@@ -43,7 +43,23 @@
     self.fillOrStroke.selectedSegmentIndex = (long)self.isFill;
     self.distantPicker.value = self.distance;
     self.strokeWidth.value = self.lineWidth;
+    
+    //set up 1st pane
+    self.effectIntensitySlider.value = self.effectIntensity;
 }
+//select color 4 1st pane
+- (IBAction)selectColor4Mono:(UIButton *)sender {
+    if (sender.tag == 400) {
+        self.color4Mono = CGRectMake(0.0, 0.0, 1.0, 0.9);
+    }else if (sender.tag == 401) {
+        self.color4Mono = CGRectMake(0.0, 1.0, 0.0, 0.9);
+    }else if (sender.tag == 402) {
+        self.color4Mono = CGRectMake(1.0, 0.0, 1.0, 0.9);
+    }else{
+        self.color4Mono = CGRectMake(0.823, 0.411, 0.117, 0.9);
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

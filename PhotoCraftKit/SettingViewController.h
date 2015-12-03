@@ -43,4 +43,9 @@
 @property (weak, nonatomic) IBOutlet UISlider *distantPicker;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *fillOrStroke;
 
+//1st photo pane
+@property(assign, nonatomic)CGFloat effectIntensity;
+@property (weak, nonatomic) IBOutlet UISlider *effectIntensitySlider;
+@property(assign, nonatomic)CGRect color4Mono;
+
 @end

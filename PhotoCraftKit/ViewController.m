@@ -21,6 +21,8 @@
 //photo editting pane
 @property (weak, nonatomic)UIImageView *backupImgView;
 @property (weak, nonatomic)UIImageView *edittingImgView;
+@property(assign, nonatomic)CGFloat effectIntensity;
+
 //end
 //context tool bar
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *photoAddEffectHeight;
@@ -104,6 +106,10 @@
     self.size = CGSizeMake(20, 20);
     self.distance = 30;
     self.lineWidth = 3;
+    //set up 1st photo pane
+    self.effectIntensity = 0.5f;
+    self.color4Mono = CGRectMake(0.0, 0.0, 1.0, 0.9);
+    
     //set up right navigation pane
     self.rightNavigationPaneIsOpen = NO;
     
@@ -185,31 +191,26 @@
 
 
 - (IBAction)photoEffectBtnClick:(UIButton *)sender {
+    
     if (sender.tag == 300) {
         CIFilter *sepia = [CIFilter filterWithName:@"CISepiaTone"];
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
         [sepia setValue:ref forKey:kCIInputImageKey];
-        [sepia setValue:@0.5f forKey:kCIInputIntensityKey];
+        [sepia setValue:@(self.effectIntensity) forKey:kCIInputIntensityKey];
         
         CIFilter *random = [CIFilter filterWithName:@"CIRandomGenerator"];
         
         CIFilter *lighten = [CIFilter filterWithName:@"CIColorControls"];
         [lighten setValue:random.outputImage forKey:kCIInputImageKey];
-        [lighten setValue:@0.5f forKey:@"inputBrightness"];
+        [lighten setValue:@(1 - self.effectIntensity)  forKey:@"inputBrightness"];
         [lighten setValue:@0.0f forKey:@"inputSaturation"];
         CIImage *croppedImage = [[lighten outputImage] imageByCroppingToRect:ref.extent];
         
         CIFilter *composite = [CIFilter filterWithName:@"CIHardLightBlendMode"];
         [composite setValue:sepia.outputImage forKey:kCIInputImageKey];
         [composite setValue:croppedImage forKey:kCIInputBackgroundImageKey];
-        
-        CIFilter *vignette = [CIFilter filterWithName:@"CIVignette"];
-        [vignette setValue:composite.outputImage forKey:kCIInputImageKey];
-        [vignette setValue:@1.0f forKey:@"inputIntensity"];
-        [vignette setValue:@30.0f forKey:@"inputRadius"];
-        
-        
-        CIImage *result = [vignette outputImage];
+
+        CIImage *result = [composite outputImage];
         
         self.edittingImgView.image = [UIImage imageWithCIImage:result];
     }else if(sender.tag == 301){
@@ -223,22 +224,46 @@
         
         CIFilter *lighten = [CIFilter filterWithName:@"CIColorControls"];
         [lighten setValue:random.outputImage forKey:kCIInputImageKey];
-        [lighten setValue:@0.5f forKey:@"inputBrightness"];
+        [lighten setValue:@(self.effectIntensity) forKey:@"inputBrightness"];
         [lighten setValue:@0.0f forKey:@"inputSaturation"];
         CIImage *croppedImage = [[lighten outputImage] imageByCroppingToRect:ref.extent];
         
         CIFilter *composite = [CIFilter filterWithName:@"CIHardLightBlendMode"];
         [composite setValue:filter.outputImage forKey:kCIInputImageKey];
         [composite setValue:croppedImage forKey:kCIInputBackgroundImageKey];
+//        加阴影
+//        CIFilter *vignette = [CIFilter filterWithName:@"CIVignette"];
+//        [vignette setValue:composite.outputImage forKey:kCIInputImageKey];
+//        [vignette setValue:@(self.effectIntensity*2) forKey:@"inputIntensity"];
+//        [vignette setValue:@40.0f forKey:@"inputRadius"];
         
         CIImage *result = [composite outputImage];
         
         self.edittingImgView.image = [UIImage imageWithCIImage:result];
+    }else if(sender.tag == 302){
+        CIFilter *filter = [CIFilter filterWithName:@"CIColorMonochrome"];
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        
+        [filter setValue:ref forKey:kCIInputImageKey];
+        [filter setValue:@(self.effectIntensity) forKey:@"inputIntensity"];
+        CIColor *color = [CIColor colorWithRed:self.color4Mono.origin.x green:self.color4Mono.origin.y blue:self.color4Mono.size.width alpha:self.color4Mono.size.height];
+        [filter setValue:color forKey:@"inputColor"];
+        
+        CIImage *result = [filter outputImage];
+        
+        self.edittingImgView.image = [UIImage imageWithCIImage:result];
+    }else if(sender.tag == 303){
+        CIFilter *filter = [CIFilter filterWithName:@"CIPhotoEffectChrome"];
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        
+        [filter setValue:ref forKey:kCIInputImageKey];
+        
+        
+        CIImage *result = [filter outputImage];
+        
+        self.edittingImgView.image = [UIImage imageWithCIImage:result];
     }
 }
-
-
-//end
 
 
 -(void)setSizePickerIndex:(int)sizePickerIndex{
@@ -515,6 +540,9 @@
     self.distance = SettingsViewController.distantPicker.value;
     self.lineWidth = SettingsViewController.strokeWidth.value;
     
+    //1st pane
+    self.effectIntensity = SettingsViewController.effectIntensitySlider.value;
+    self.color4Mono = SettingsViewController.color4Mono;
     
 }
 
@@ -533,6 +561,10 @@
     destinationVC.isFill = self.fillOrStrokePickerIndex;
     destinationVC.distance= self.distance;
     destinationVC.lineWidth = self.lineWidth;
+    
+    //for first pane
+    destinationVC.effectIntensity = self.effectIntensity;
+    destinationVC.color4Mono = self.color4Mono;
 
     
 }

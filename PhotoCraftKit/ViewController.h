@@ -27,5 +27,8 @@
 @property(assign, nonatomic)CGSize size;
 @property(assign, nonatomic)CGFloat distance;
 @property(assign, nonatomic)CGFloat lineWidth;
+
+//1st pane
+@property(assign, nonatomic)CGRect color4Mono;
 @end
 
