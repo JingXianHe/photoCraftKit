@@ -119,7 +119,6 @@
     
     //set up 2nd pane
     _isPhotoDistortZone = false;
-    
     //end
     
     //set up right navigation pane
@@ -156,7 +155,6 @@
     
     // 1.取出选中的图片
     UIImage *image = info[UIImagePickerControllerOriginalImage];
-    
     // 2.添加图片到相册中
     UIImageView *realImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:image]];
     realImgView.image = image;
@@ -173,7 +171,8 @@
     tempImgView.image = image;
     [self.TempImageView addSubview:tempImgView];
     self.edittingImgView = tempImgView;
-    
+
+
 }
 
 -(CGRect)imageAdjust4Screen:(UIImage *)img{
@@ -225,7 +224,7 @@
 
         CIImage *result = [composite outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
 
@@ -260,7 +259,7 @@
         
         CIImage *result = [composite outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
@@ -280,7 +279,7 @@
         
         CIImage *result = [filter outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
@@ -298,7 +297,7 @@
         
         CIImage *result = [filter outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
@@ -316,7 +315,7 @@
         
         CIImage *result = [filter outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
@@ -335,7 +334,7 @@
         
         CIImage *result = [filter outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
@@ -367,7 +366,7 @@
         
         CIImage *result = [filter outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
@@ -386,11 +385,11 @@
         CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
         [filter setValue:ref forKey:kCIInputImageKey];
-        [filter setValue:@(self.effectIntensity*20) forKey:kCIInputRadiusKey];
+        [filter setValue:@(self.effectIntensity*15) forKey:kCIInputRadiusKey];
         
         CIImage *result = [filter outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
@@ -404,13 +403,13 @@
         
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
         [filter setValue:ref forKey:kCIInputImageKey];
-        CIVector *centerVector = [CIVector vectorWithX:self.TempImageView.center.x Y:self.TempImageView.center.y];
+        CIVector *centerVector = [CIVector vectorWithX:0 Y:0];
         [filter setValue:centerVector forKey:kCIInputCenterKey];
         [filter setValue:@(self.effectIntensity*5) forKey:@"inputAmount"];
         
         CIImage *result = [filter outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
@@ -420,7 +419,7 @@
         CGImageRelease(cgimg);
         self.edittingImgView.image = newImage;
     }else if(sender.tag == 502){
-        CIImage *ciImage = [[CIImage alloc] initWithImage:self.edittingImgView.image];
+        CIImage *ciImage = [[CIImage alloc] initWithImage:self.backupImgView.image];
         NSDictionary *params = @{
                                  kCIInputImageKey: ciImage,
                                  };
@@ -436,7 +435,7 @@
 
         CIImage *result = [filter outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
@@ -447,25 +446,29 @@
         CGImageRelease(cgimg);
         self.edittingImgView.image = newImage;
     }else if(sender.tag == 503){
-        CIFilter *filter = [CIFilter filterWithName:@"CILightTunnel"];
+        CIFilter *filter = [CIFilter filterWithName:@"CIColorInvert"];
         
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
         [filter setValue:ref forKey:kCIInputImageKey];
-        
-        [filter setDefaults];
-        
+//        CIVector *centerVector = [CIVector vectorWithX:150 Y:150];
+//        
+//        [filter setValue:centerVector forKey:kCIInputCenterKey];
+//        
+//        [filter setValue:@(0.00) forKey:kCIInputAngleKey];
+//        [filter setValue:@(50) forKey:kCIInputWidthKey];
         
         CIImage *result = [filter outputImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
+        CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer:@(YES)}];
         
         CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
         
         UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
-        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        UIImage *newImage1 = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
         
         CGImageRelease(cgimg);
-        self.edittingImgView.image = newImage;
+        self.edittingImgView.image = newImage1;
+
     }
 }
 
