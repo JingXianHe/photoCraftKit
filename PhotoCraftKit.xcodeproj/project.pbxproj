@@ -17,6 +17,7 @@
 		FF5EB9FA1BFC2F7400E2378C /* PhotoCraftKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EB9F91BFC2F7400E2378C /* PhotoCraftKitTests.m */; };
 		FF5EBA051BFC2F7400E2378C /* PhotoCraftKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA041BFC2F7400E2378C /* PhotoCraftKitUITests.m */; };
 		FF5EBA191BFC77CA00E2378C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA181BFC77CA00E2378C /* SettingViewController.m */; settings = {ASSET_TAGS = (); }; };
+		FF85F41F1C12E6FD00105662 /* iron_texture637.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF85F41E1C12E6FD00105662 /* iron_texture637.jpg */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FF5EBA061BFC2F7400E2378C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF5EBA171BFC77CA00E2378C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		FF5EBA181BFC77CA00E2378C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		FF85F41E1C12E6FD00105662 /* iron_texture637.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iron_texture637.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		FF5EB9DF1BFC2F7400E2378C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF85F41E1C12E6FD00105662 /* iron_texture637.jpg */,
 				FF5EB9E01BFC2F7400E2378C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -256,6 +259,7 @@
 			files = (
 				FF5EB9EF1BFC2F7400E2378C /* LaunchScreen.storyboard in Resources */,
 				FF5EB9EC1BFC2F7400E2378C /* Assets.xcassets in Resources */,
+				FF85F41F1C12E6FD00105662 /* iron_texture637.jpg in Resources */,
 				FF5EB9EA1BFC2F7400E2378C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

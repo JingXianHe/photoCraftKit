@@ -15,6 +15,7 @@
 
 
 @interface SettingViewController : UIViewController
+
 @property(weak, nonatomic)id<SettingViewControllerDelegate> settingDelegate;
 @property(assign, nonatomic)CGFloat brushWidth;
 @property(assign, nonatomic)CGFloat opacity;
@@ -42,6 +43,11 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sizePicker;
 @property (weak, nonatomic) IBOutlet UISlider *distantPicker;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *fillOrStroke;
+
+//zone region
+@property(assign, nonatomic)BOOL isDrawingZone;
+@property(assign, nonatomic)BOOL isPatternZone;
+@property(assign, nonatomic)BOOL isPhotoZone;
 
 //1st photo pane
 @property(assign, nonatomic)CGFloat effectIntensity;

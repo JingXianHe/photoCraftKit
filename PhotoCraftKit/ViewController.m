@@ -24,10 +24,12 @@
 @property(assign, nonatomic)CGFloat effectIntensity;
 
 //end
-//context tool bar
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *photoAddEffectHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *drawLinesHeight;
+//photo distort pane
+
+
 //end
+
+
 - (IBAction)enterDrawingContext;
 - (IBAction)enterPhotoEdit;
 - (IBAction)enterPatternZone;
@@ -35,6 +37,8 @@
 //drawing panel
 - (IBAction)colorBtnPressed:(UIButton *)sender;
 @property(strong, nonatomic)NSMutableArray *colors;
+@property (weak, nonatomic) IBOutlet UIScrollView *drawingPaneToolBar;
+@property (weak, nonatomic) IBOutlet UIView *photoDistortPaneToolbar;
 
 
 //end
@@ -92,10 +96,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationBarIsOpen = NO;
-    self.photoAddEffectHeight.constant = 0;
     _opacity = 1.0;
     _brushWidth = 5.0;
     _isDrawingZone = false;
+    self.drawingPaneToolBar.hidden = YES;
+    self.photoDistortPaneToolbar.hidden = YES;
     _red = 0.0;
     _blue = 0.0;
     _green = 0.0;
@@ -106,9 +111,16 @@
     self.size = CGSizeMake(20, 20);
     self.distance = 30;
     self.lineWidth = 3;
+    _isPatternZone = false;
     //set up 1st photo pane
     self.effectIntensity = 0.5f;
     self.color4Mono = CGRectMake(0.0, 0.0, 1.0, 0.9);
+    _isPhotoZone = true;
+    
+    //set up 2nd pane
+    _isPhotoDistortZone = false;
+    
+    //end
     
     //set up right navigation pane
     self.rightNavigationPaneIsOpen = NO;
@@ -120,6 +132,7 @@
                                           otherButtonTitles:@"OK", nil   ];
     alert.delegate = self;
     [alert show];
+    
 }
 #pragma alertView delegates
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -212,7 +225,15 @@
 
         CIImage *result = [composite outputImage];
         
-        self.edittingImgView.image = [UIImage imageWithCIImage:result];
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
     }else if(sender.tag == 301){
         CIFilter *filter = [CIFilter filterWithName:@"CIFalseColor"];
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
@@ -239,7 +260,15 @@
         
         CIImage *result = [composite outputImage];
         
-        self.edittingImgView.image = [UIImage imageWithCIImage:result];
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
     }else if(sender.tag == 302){
         CIFilter *filter = [CIFilter filterWithName:@"CIColorMonochrome"];
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
@@ -251,7 +280,15 @@
         
         CIImage *result = [filter outputImage];
         
-        self.edittingImgView.image = [UIImage imageWithCIImage:result];
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
     }else if(sender.tag == 303){
         CIFilter *filter = [CIFilter filterWithName:@"CIPhotoEffectChrome"];
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
@@ -261,11 +298,215 @@
         
         CIImage *result = [filter outputImage];
         
-        self.edittingImgView.image = [UIImage imageWithCIImage:result];
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
+    }else if(sender.tag == 304){
+        CIFilter *filter = [CIFilter filterWithName:@"CISRGBToneCurveToLinear"];
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        
+        [filter setValue:ref forKey:kCIInputImageKey];
+        
+        
+        CIImage *result = [filter outputImage];
+        
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
+    }
+    else if(sender.tag == 305){
+        CIFilter *filter = [CIFilter filterWithName:@"CIExposureAdjust"];
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        
+        [filter setValue:ref forKey:kCIInputImageKey];
+        [filter setValue:@(self.effectIntensity) forKey:kCIInputEVKey];
+        
+        CIImage *result = [filter outputImage];
+        
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
+    }else if(sender.tag == 306){
+        CIFilter *filter = [CIFilter filterWithName:@"CIVibrance"];
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        
+        
+        CIFilter *random = [CIFilter filterWithName:@"CIRandomGenerator"];
+        
+        CIFilter *lighten = [CIFilter filterWithName:@"CIColorControls"];
+        [lighten setValue:random.outputImage forKey:kCIInputImageKey];
+        [lighten setValue:@(1 - self.effectIntensity)  forKey:@"inputBrightness"];
+        [lighten setValue:@0.0f forKey:@"inputSaturation"];
+        CIImage *croppedImage = [[lighten outputImage] imageByCroppingToRect:ref.extent];
+        
+        CIFilter *composite = [CIFilter filterWithName:@"CIHardLightBlendMode"];
+        [composite setValue:ref forKey:kCIInputImageKey];
+        [composite setValue:croppedImage forKey:kCIInputBackgroundImageKey];
+        
+        [filter setValue:composite.outputImage forKey:kCIInputImageKey];
+        [filter setValue:@(self.effectIntensity) forKey:@"inputAmount"];
+       
+        
+        CIImage *result = [filter outputImage];
+        
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
+    }
+}
+//end
+//2nd pane
+
+- (IBAction)photoDistortPressed:(UIButton *)sender {
+    if (sender.tag == 500) {
+        CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        [filter setValue:ref forKey:kCIInputImageKey];
+        [filter setValue:@(self.effectIntensity*20) forKey:kCIInputRadiusKey];
+        
+        CIImage *result = [filter outputImage];
+        
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
+    }else if(sender.tag == 501){
+        CIFilter *filter = [CIFilter filterWithName:@"CIZoomBlur"];
+        
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        [filter setValue:ref forKey:kCIInputImageKey];
+        CIVector *centerVector = [CIVector vectorWithX:self.TempImageView.center.x Y:self.TempImageView.center.y];
+        [filter setValue:centerVector forKey:kCIInputCenterKey];
+        [filter setValue:@(self.effectIntensity*5) forKey:@"inputAmount"];
+        
+        CIImage *result = [filter outputImage];
+        
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
+    }else if(sender.tag == 502){
+        CIImage *ciImage = [[CIImage alloc] initWithImage:self.edittingImgView.image];
+        NSDictionary *params = @{
+                                 kCIInputImageKey: ciImage,
+                                 };
+        CIFilter *filter = [CIFilter filterWithName:@"CIGlassDistortion"
+                                withInputParameters:params];
+        [filter setDefaults];
+        
+        // 输入变形参数
+        if ([filter respondsToSelector:NSSelectorFromString(@"inputTexture")]) {
+            CIImage *ciTextureImage = [[CIImage alloc] initWithImage:[UIImage imageNamed:@"iron_texture637.jpg"]];
+            [filter setValue:ciTextureImage forKey:@"inputTexture"];
+        }
+
+        CIImage *result = [filter outputImage];
+        
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        // 释放资源
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
+    }else if(sender.tag == 503){
+        CIFilter *filter = [CIFilter filterWithName:@"CILightTunnel"];
+        
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        [filter setValue:ref forKey:kCIInputImageKey];
+        
+        [filter setDefaults];
+        
+        
+        CIImage *result = [filter outputImage];
+        
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg = [context createCGImage:result fromRect:result.extent];
+        
+        UIImageOrientation origentation = self.backupImgView.image.imageOrientation;
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:origentation];
+        
+        CGImageRelease(cgimg);
+        self.edittingImgView.image = newImage;
     }
 }
 
 
+//end
+//for 1st - 3rd zone
+- (IBAction)refreshScreen {
+    [self rightNavigationBtnPressed];
+    if (_isPhotoZone == true||_isPhotoDistortZone == true) {
+        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
+        
+        self.edittingImgView.image = [UIImage imageWithCIImage:ref];
+    }
+}
+
+- (IBAction)saveEditingImage {
+    [self rightNavigationBtnPressed];
+    if (_isPhotoZone == true) {
+        if(self.edittingImgView.image){
+            self.backupImgView.image = self.edittingImgView.image;
+            UIImageWriteToSavedPhotosAlbum(self.edittingImgView.image,nil,nil,nil);
+        }
+        
+    }
+}
+- (IBAction)shareProduct {
+    [self rightNavigationBtnPressed];
+    UIImage *myImage = self.edittingImgView.image;
+    
+    
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[myImage]
+     applicationActivities:nil];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+    
+    UIPopoverPresentationController *presentationController = [controller popoverPresentationController];
+    
+    presentationController.sourceView = self.view;
+}
+
+//end
 -(void)setSizePickerIndex:(int)sizePickerIndex{
     _sizePickerIndex = sizePickerIndex;
     if (sizePickerIndex == 0) {
@@ -278,8 +519,8 @@
 }
 
 -(void)closeAllContextToolBars{
-    self.photoAddEffectHeight.constant = 0;
-    self.drawLinesHeight.constant = 0;
+    self.photoDistortPaneToolbar.hidden = YES;
+    self.drawingPaneToolBar.hidden = YES;
 }
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -291,15 +532,15 @@
 
 - (IBAction)enterDrawingContext {
     [self closeAllContextToolBars];
-    self.photoAddEffectHeight.constant = 90;
     [self navigationPressed];
     [self initAllZoneTag];
     _isDrawingZone = true;
+    self.drawingPaneToolBar.hidden = NO;
 }
 
 - (IBAction)enterPhotoEdit {
     [self closeAllContextToolBars];
-    self.drawLinesHeight.constant = 90;
+    
     [self navigationPressed];
     [self initAllZoneTag];
     _isPhotoZone = true;
@@ -307,16 +548,28 @@
 
 - (IBAction)enterPatternZone {
     [self closeAllContextToolBars];
-    self.photoAddEffectHeight.constant = 90;
     [self navigationPressed];
     [self initAllZoneTag];
     _isPatternZone = true;
+    self.drawingPaneToolBar.hidden = NO;
+}
+- (IBAction)photoDistortBtnPressed {
+    [self closeAllContextToolBars];
+    [self navigationPressed];
+    [self initAllZoneTag];
+    _isPhotoDistortZone = true;
+    self.photoDistortPaneToolbar.hidden = NO;
+    if(self.edittingImgView.image){
+        self.edittingImgView.image = self.backupImgView.image;
+        
+    }
     
 }
 -(void)initAllZoneTag{
     _isPatternZone = false;
     _isDrawingZone = false;
     _isPhotoZone = false;
+    _isPhotoDistortZone = false;
 }
 // for drawing panel
 -(NSMutableArray *)colors{
@@ -565,6 +818,10 @@
     //for first pane
     destinationVC.effectIntensity = self.effectIntensity;
     destinationVC.color4Mono = self.color4Mono;
+    
+    destinationVC.isPatternZone = _isPatternZone;
+    destinationVC.isPhotoZone = _isPhotoZone;
+    destinationVC.isDrawingZone = _isDrawingZone;
 
     
 }

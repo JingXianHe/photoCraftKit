@@ -12,6 +12,10 @@
 @interface SettingViewController ()
 - (IBAction)closeCurrentPanel;
 - (IBAction)selectedPattern:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *photoEffect;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineSetting;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *patternSetting;
+
 
 
 @end
@@ -43,6 +47,7 @@
     self.fillOrStroke.selectedSegmentIndex = (long)self.isFill;
     self.distantPicker.value = self.distance;
     self.strokeWidth.value = self.lineWidth;
+    
     
     //set up 1st pane
     self.effectIntensitySlider.value = self.effectIntensity;
