@@ -119,6 +119,7 @@
     
     //set up 2nd pane
     _isPhotoDistortZone = false;
+    _isReflectionPhoto = false;
     //end
     
     //set up right navigation pane
@@ -157,6 +158,7 @@
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     // 2.添加图片到相册中
     UIImageView *realImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:image]];
+    realImgView.contentMode = UIViewContentModeScaleAspectFill;
     realImgView.image = image;
     if (self.edittingImgView) {
         [self.edittingImgView removeFromSuperview];
@@ -168,6 +170,7 @@
     self.backupImgView.hidden = YES;
     
     UIImageView *tempImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:image]];
+    tempImgView.contentMode = UIViewContentModeScaleAspectFill;
     tempImgView.image = image;
     [self.TempImageView addSubview:tempImgView];
     self.edittingImgView = tempImgView;
@@ -381,6 +384,9 @@
 //2nd pane
 
 - (IBAction)photoDistortPressed:(UIButton *)sender {
+    if (self.backupImgView.image == nil) {
+        return;
+    }
     if (sender.tag == 500) {
         CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
@@ -429,7 +435,7 @@
         
         // 输入变形参数
         if ([filter respondsToSelector:NSSelectorFromString(@"inputTexture")]) {
-            CIImage *ciTextureImage = [[CIImage alloc] initWithImage:[UIImage imageNamed:@"iron_texture637.jpg"]];
+            CIImage *ciTextureImage = [[CIImage alloc] initWithImage:[UIImage imageNamed:@"texture.png"]];
             [filter setValue:ciTextureImage forKey:@"inputTexture"];
         }
 
@@ -469,9 +475,68 @@
         CGImageRelease(cgimg);
         self.edittingImgView.image = newImage1;
 
+    }else if (sender.tag == 504){
+        _isReflectionPhoto = true;
+        CGSize originSize = self.edittingImgView.bounds.size;
+        CGSize frameSize = CGSizeMake(originSize.width, originSize.height * 2);
+        UIGraphicsBeginImageContext(frameSize);
+        [self.backupImgView.image drawInRect:CGRectMake(0, 0, originSize.width, originSize.height)];
+        UIImage *bottomImg = [self getReflectionImg:originSize inputImg:self.backupImgView.image];
+        [bottomImg drawInRect:CGRectMake(0, originSize.height, originSize.width, originSize.height)];
+        UIImage *output = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        self.edittingImgView.image = output;
     }
 }
-
+-(UIImage *)getReflectionImg:(CGSize) originSize inputImg:(UIImage *)origin{
+    
+    UIGraphicsBeginImageContext(originSize);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGGradientRef gradient;
+    //	2. 采用彩色空间
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    //	3. 定义渐变颜色组件
+    //	  每四个数一组，分别对应r,g,b,透明度
+    CGFloat components[8] = {1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.8};
+    CGFloat locations[2] = {1,0};
+    
+    //	5. 创建颜色渐进，3表示有三个点
+    gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, 2);
+    // 6. 控制渐变方向是水平线或者垂直线，3表示超过250后继续填上最后那个颜色，2不填颜色留白, 1表示超过0还填色而0表示两边都不填
+    CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(0, originSize.height), 3);
+    UIImage *mask = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CGColorSpaceRelease(colorSpace);
+    CGGradientRelease(gradient);
+    
+    //开始将图片转灰度
+    CGColorSpaceRef colorSpace1 = CGColorSpaceCreateDeviceGray();
+    int width1 = mask.size.width;
+    int height1 = mask.size.height;
+    CGContextRef context1 = CGBitmapContextCreate(NULL, width1, height1, 8, width1, colorSpace1, (CGBitmapInfo)kCGImageAlphaNone);
+    
+    CGContextDrawImage(context1, CGRectMake(0, 0, width1, height1), mask.CGImage);
+    CGImageRef imageRef = CGBitmapContextCreateImage(context1);
+    CGContextRelease(context1);
+    CGColorSpaceRelease(colorSpace1);
+    // 传出灰度图片，结束灰度加工
+    UIImage *output = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    UIGraphicsBeginImageContext(originSize);
+    CGContextRef context2 = UIGraphicsGetCurrentContext();
+    CGContextClipToMask(context2, CGRectMake(0, 0, originSize.width, originSize.height), output.CGImage);
+    CGContextSaveGState(context2);
+    CGContextTranslateCTM(context2, originSize.width/2, originSize.height/2);
+    CGContextScaleCTM(context2, 1.0, -1.0);
+    CGContextTranslateCTM(context2, -originSize.width/2, -originSize.height/2);
+    [origin drawInRect:CGRectMake(0, 0, originSize.width, originSize.height)];
+    CGContextRestoreGState(context2);
+    UIImage *mask1 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return mask1;
+}
 
 //end
 //for 1st - 3rd zone
@@ -486,10 +551,31 @@
 
 - (IBAction)saveEditingImage {
     [self rightNavigationBtnPressed];
-    if (_isPhotoZone == true) {
+    if (_isPhotoZone == true || _isPhotoDistortZone == true) {
         if(self.edittingImgView.image){
             self.backupImgView.image = self.edittingImgView.image;
             UIImageWriteToSavedPhotosAlbum(self.edittingImgView.image,nil,nil,nil);
+        }
+        if (_isReflectionPhoto == true) {
+            // 2.添加图片到相册中
+            UIImageView *realImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:self.edittingImgView.image]];
+            realImgView.contentMode = UIViewContentModeScaleAspectFill;
+            realImgView.image = self.edittingImgView.image;
+            if (self.edittingImgView) {
+                [self.edittingImgView removeFromSuperview];
+                [self.backupImgView removeFromSuperview];
+            }
+            
+            [self.RealImageView addSubview:realImgView];
+            self.backupImgView = realImgView;
+            self.backupImgView.hidden = YES;
+            
+            UIImageView *tempImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:realImgView.image]];
+            tempImgView.contentMode = UIViewContentModeScaleAspectFill;
+            tempImgView.image = realImgView.image;
+            [self.TempImageView addSubview:tempImgView];
+            self.edittingImgView = tempImgView;
+            _isReflectionPhoto = false;
         }
         
     }

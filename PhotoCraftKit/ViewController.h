@@ -20,6 +20,7 @@
     BOOL _isPatternZone;
     BOOL _isPhotoZone;
     BOOL _isPhotoDistortZone;
+    BOOL _isReflectionPhoto;
 }
 
 @property(assign, nonatomic)int pathType;
