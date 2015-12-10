@@ -563,6 +563,18 @@
         UIGraphicsEndImageContext();
         self.edittingImgView.image = tempImg;
         
+    }else if(sender.tag == 601){
+        CGRect realDrawRect = CGRectMake(imgSize.width/2 - minLength/2, imgSize.height/2 - minLength/2, minLength, minLength);
+        UIGraphicsBeginImageContext(imgSize);
+        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:realDrawRect];
+        UIBezierPath *inner = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(imgSize.width/2 - minLength*self.effectIntensity/2, imgSize.height/2 - minLength*self.effectIntensity/2, minLength*self.effectIntensity, minLength*self.effectIntensity)];
+        [path appendPath:inner];
+        path.usesEvenOddFillRule = YES;
+        [path addClip];
+        [self.backupImgView.image drawInRect:drawRect];
+        UIImage *tempImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.edittingImgView.image = tempImg;
     }
 }
 
