@@ -25,7 +25,7 @@
 
 //end
 //photo distort pane
-
+@property (weak, nonatomic) IBOutlet UIView *photoDistortPaneToolbar;
 
 //end
 
@@ -33,16 +33,19 @@
 - (IBAction)enterDrawingContext;
 - (IBAction)enterPhotoEdit;
 - (IBAction)enterPatternZone;
+- (IBAction)enterClipZone;
 
 //drawing panel
 - (IBAction)colorBtnPressed:(UIButton *)sender;
 @property(strong, nonatomic)NSMutableArray *colors;
 @property (weak, nonatomic) IBOutlet UIScrollView *drawingPaneToolBar;
-@property (weak, nonatomic) IBOutlet UIView *photoDistortPaneToolbar;
+
+//end
+//photoClipToolbar
+@property (weak, nonatomic) IBOutlet UIView *photoClipToolbar;
 
 
 //end
-
 //right navigation pane right constraint
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightNavigationConstraint;
 @property(nonatomic, assign)BOOL rightNavigationPaneIsOpen;
@@ -122,6 +125,10 @@
     _isReflectionPhoto = false;
     //end
     
+    //set up 3rd zone
+    _isClipZone = false;
+    self.photoClipToolbar.hidden = YES;
+    //end
     //set up right navigation pane
     self.rightNavigationPaneIsOpen = NO;
     
@@ -539,6 +546,28 @@
 }
 
 //end
+//3rd zone
+- (IBAction)getClipImg:(UIButton *)sender {
+    CGSize imgSize = self.backupImgView.frame.size;
+    CGFloat minLength = imgSize.width > imgSize.height ? imgSize.height:imgSize.width;
+    CGRect drawRect = CGRectMake(0, 0, imgSize.width, imgSize.height);
+    if (self.backupImgView.image == nil) {
+        return;
+    }
+    if (sender.tag == 600) {
+        UIGraphicsBeginImageContext(imgSize);
+        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:drawRect cornerRadius:minLength*self.effectIntensity/2];
+        [path addClip];
+        [self.backupImgView.image drawInRect:drawRect];
+        UIImage *tempImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.edittingImgView.image = tempImg;
+        
+    }
+}
+
+
+//end
 //for 1st - 3rd zone
 - (IBAction)refreshScreen {
     [self rightNavigationBtnPressed];
@@ -610,6 +639,7 @@
 -(void)closeAllContextToolBars{
     self.photoDistortPaneToolbar.hidden = YES;
     self.drawingPaneToolBar.hidden = YES;
+    self.photoClipToolbar.hidden = YES;
 }
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -629,7 +659,6 @@
 
 - (IBAction)enterPhotoEdit {
     [self closeAllContextToolBars];
-    
     [self navigationPressed];
     [self initAllZoneTag];
     _isPhotoZone = true;
@@ -642,6 +671,8 @@
     _isPatternZone = true;
     self.drawingPaneToolBar.hidden = NO;
 }
+
+
 - (IBAction)photoDistortBtnPressed {
     [self closeAllContextToolBars];
     [self navigationPressed];
@@ -654,11 +685,23 @@
     }
     
 }
+- (IBAction)enterClipZone {
+    [self closeAllContextToolBars];
+    [self navigationPressed];
+    [self initAllZoneTag];
+    _isClipZone = true;
+    self.photoClipToolbar.hidden = NO;
+    if(self.edittingImgView.image){
+        self.edittingImgView.image = self.backupImgView.image;
+        
+    }
+}
 -(void)initAllZoneTag{
     _isPatternZone = false;
     _isDrawingZone = false;
     _isPhotoZone = false;
     _isPhotoDistortZone = false;
+    _isClipZone = false;
 }
 // for drawing panel
 -(NSMutableArray *)colors{

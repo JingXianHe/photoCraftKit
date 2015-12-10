@@ -21,6 +21,7 @@
     BOOL _isPhotoZone;
     BOOL _isPhotoDistortZone;
     BOOL _isReflectionPhoto;
+    BOOL _isClipZone;
 }
 
 @property(assign, nonatomic)int pathType;
