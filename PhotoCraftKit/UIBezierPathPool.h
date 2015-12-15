@@ -19,4 +19,5 @@
 +(UIBezierPath *)getHeartPath:(int)sizePickerIndex;
 +(UIBezierPath *)getStarPath:(int)sizePickerIndex;
 +(UIBezierPath *)getPawPath:(int)sizePickerIndex;
++(UIBezierPath *)getStarsBezierPath:(CGSize) realSize;
 @end

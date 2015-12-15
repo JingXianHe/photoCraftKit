@@ -1081,4 +1081,27 @@
         return bezier2Path;
     }
 }
+//return {0, 0, 200, 200} BezierPath
++(UIBezierPath *)getStarsBezierPath:(CGSize) realSize{
+
+    UIGraphicsBeginImageContext(CGSizeMake(200, 200));
+    
+    //// Bezier Drawing
+    UIBezierPath* starPath = UIBezierPath.bezierPath;
+    [starPath moveToPoint: CGPointMake(100, 0)];
+    [starPath addLineToPoint: CGPointMake(135.27, 51.46)];
+    [starPath addLineToPoint: CGPointMake(195.11, 69.1)];
+    [starPath addLineToPoint: CGPointMake(157.06, 118.54)];
+    [starPath addLineToPoint: CGPointMake(158.78, 180.9)];
+    [starPath addLineToPoint: CGPointMake(100, 160)];
+    [starPath addLineToPoint: CGPointMake(41.22, 180.9)];
+    [starPath addLineToPoint: CGPointMake(42.94, 118.54)];
+    [starPath addLineToPoint: CGPointMake(4.89, 69.1)];
+    [starPath addLineToPoint: CGPointMake(64.73, 51.46)];
+    [starPath closePath];
+    UIGraphicsEndImageContext();
+    return starPath;
+}
+
+
 @end

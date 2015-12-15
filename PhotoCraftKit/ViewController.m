@@ -576,6 +576,34 @@
         UIGraphicsEndImageContext();
         self.edittingImgView.image = tempImg;
     }
+    else if(sender.tag == 602){
+
+       
+        CGFloat minLength = imgSize.width > imgSize.height ? imgSize.height:imgSize.width;
+        CGFloat maxLength = imgSize.width < imgSize.height ? imgSize.height:imgSize.width;
+        UIGraphicsBeginImageContext(imgSize);
+        UIBezierPath *path = [UIBezierPathPool getStarsBezierPath:imgSize];
+        CGAffineTransform tt = CGAffineTransformIdentity;
+        tt = CGAffineTransformTranslate(tt, imgSize.width/2 - (minLength+(maxLength-minLength)*self.effectIntensity)/2, imgSize.height/2 - (minLength+(maxLength-minLength)*self.effectIntensity)/2);
+        CGFloat scaleFactor = (minLength+(maxLength-minLength)*self.effectIntensity) / 200;
+        tt = CGAffineTransformScale(tt, scaleFactor, scaleFactor);
+        
+        [path applyTransform:tt];
+        [path addClip];
+        [self.backupImgView.image drawInRect:drawRect];
+        UIImage *tempImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.edittingImgView.image = tempImg;
+    }else if(sender.tag == 603){
+        
+        
+    }else if(sender.tag == 604){
+        
+    }else if(sender.tag == 605){
+        
+    }else if(sender.tag == 606){
+        
+    }
 }
 
 
