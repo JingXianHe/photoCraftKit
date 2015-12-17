@@ -595,17 +595,137 @@
         UIGraphicsEndImageContext();
         self.edittingImgView.image = tempImg;
     }else if(sender.tag == 603){
-        
+        UIGraphicsBeginImageContext(imgSize);
+        UIImage *mask = [self getBlurRound:CGRectMake(0, 0, imgSize.width, imgSize.height)];
+        UIImage *content = [self getClipImgBaseGrayMask:mask inputImg:self.backupImgView.image];
+        [content drawInRect:CGRectMake(0, 0, imgSize.width, imgSize.height)];
+        UIImage *tempImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.edittingImgView.image = tempImg;
         
     }else if(sender.tag == 604){
+        UIGraphicsBeginImageContext(imgSize);
+        UIImage *mask = [self getBlurRoundRectangle:CGRectMake(0, 0, imgSize.width, imgSize.height)];
+        UIImage *content = [self getClipImgBaseGrayMask:mask inputImg:self.backupImgView.image];
+        [content drawInRect:CGRectMake(0, 0, imgSize.width, imgSize.height)];
+        UIImage *tempImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.edittingImgView.image = tempImg;
         
     }else if(sender.tag == 605){
+        CGFloat minLength = imgSize.width > imgSize.height ? imgSize.height:imgSize.width;
+        CGFloat maxLength = imgSize.width < imgSize.height ? imgSize.height:imgSize.width;
+        UIGraphicsBeginImageContext(imgSize);
+        UIBezierPath *path = [UIBezierPathPool getSunShapeBezier];
+        CGAffineTransform tt = CGAffineTransformIdentity;
+        tt = CGAffineTransformTranslate(tt, imgSize.width/2 - (minLength+(maxLength-minLength)*self.effectIntensity)/2, imgSize.height/2 - (minLength+(maxLength-minLength)*self.effectIntensity)/2);
+        CGFloat scaleFactor = (minLength+(maxLength-minLength)*self.effectIntensity) / 200;
+        tt = CGAffineTransformScale(tt, scaleFactor, scaleFactor);
+        
+        [path applyTransform:tt];
+        [path addClip];
+        [self.backupImgView.image drawInRect:drawRect];
+        UIImage *tempImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.edittingImgView.image = tempImg;
         
     }else if(sender.tag == 606){
+        CGFloat minLength = imgSize.width > imgSize.height ? imgSize.height:imgSize.width;
+        CGFloat maxLength = imgSize.width < imgSize.height ? imgSize.height:imgSize.width;
+        UIGraphicsBeginImageContext(imgSize);
+        UIBezierPath *path = [UIBezierPathPool getTattorsBezier];
+        CGAffineTransform tt = CGAffineTransformIdentity;
+        tt = CGAffineTransformTranslate(tt, imgSize.width/2 - (minLength+(maxLength-minLength)*self.effectIntensity)/2, imgSize.height/2 - (minLength+(maxLength-minLength)*self.effectIntensity)/2);
+        CGFloat scaleFactor = (minLength+(maxLength-minLength)*self.effectIntensity) / 200;
+        tt = CGAffineTransformScale(tt, scaleFactor, scaleFactor);
         
+        [path applyTransform:tt];
+        [path addClip];
+        [self.backupImgView.image drawInRect:drawRect];
+        UIImage *tempImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.edittingImgView.image = tempImg;
     }
 }
-
+-(UIImage *)getBlurRoundRectangle:(CGRect)frameRect{
+    CGFloat minLength = frameRect.size.width > frameRect.size.height ? frameRect.size.height:frameRect.size.width;
+    UIGraphicsBeginImageContext(frameRect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGGradientRef gradient;
+    //	2. 定义色彩空间引用
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    //	3. 定义渐变颜色组件
+    //	  每四个数一组，分别对应r,g,b,透明度
+    CGFloat components[8] = {1.0, 1.0, 1.0, 0.90, 0.0, 0.0, 0.0, 1.0};
+    //	4. 定义颜色渐变位置
+    // 第一个颜色开始渐变的位置
+    // 第二个颜色开始渐变的位置
+    CGFloat locations[2] = {0.8,0.0};
+    //	5. 创建颜色渐进，这里3和0用得较多
+    gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, 2);
+    CGFloat length = 0.708 * minLength;
+    CGFloat offsetX = (frameRect.size.width - minLength)/2 + (minLength - length)/2;
+    CGFloat offsetY = (frameRect.size.height - minLength)/2 + (minLength - length)/2;
+    CGRect rectangleRect = CGRectMake(offsetX, offsetY, length, length);
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rectangleRect cornerRadius:frameRect.size.width/15];
+    [path addClip];
+    //80是左边点的圆半径，50是右边圆的半径，当然100，100是圆心
+    CGContextDrawRadialGradient(context, gradient, CGPointMake(frameRect.size.width/2, frameRect.size.height/2),minLength/2, CGPointMake(frameRect.size.width/2, frameRect.size.height/2),minLength*(1 - self.effectIntensity)/2, 3);
+    UIImage *content = UIGraphicsGetImageFromCurrentImageContext();
+    CGColorSpaceRelease(colorSpace);
+    CGGradientRelease(gradient);
+    UIGraphicsEndImageContext();
+    return content;
+}
+-(UIImage *)getBlurRound:(CGRect)frameRect{
+    CGFloat minLength = frameRect.size.width > frameRect.size.height ? frameRect.size.height:frameRect.size.width;
+    UIGraphicsBeginImageContext(frameRect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGGradientRef gradient;
+    //	2. 定义色彩空间引用
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    //	3. 定义渐变颜色组件
+    //	  每四个数一组，分别对应r,g,b,透明度
+    CGFloat components[8] = {1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0};
+    //	4. 定义颜色渐变位置
+    // 第一个颜色开始渐变的位置
+    // 第二个颜色开始渐变的位置
+    CGFloat locations[2] = {0.8,0.0};
+    //	5. 创建颜色渐进，这里3和0用得较多
+    gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, 2);
+    //80是左边点的圆半径，50是右边圆的半径，当然100，100是圆心
+    CGContextDrawRadialGradient(context, gradient, CGPointMake(frameRect.size.width/2, frameRect.size.height/2),minLength/2, CGPointMake(frameRect.size.width/2, frameRect.size.height/2),minLength*self.effectIntensity/2, 3);
+    UIImage *content = UIGraphicsGetImageFromCurrentImageContext();
+    CGColorSpaceRelease(colorSpace);
+    CGGradientRelease(gradient);
+    UIGraphicsEndImageContext();
+    return content;
+}
+-(UIImage *)getClipImgBaseGrayMask:(UIImage *)mask inputImg:(UIImage *)img{
+    UIGraphicsBeginImageContext(mask.size);
+    //开始将图片转灰度
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+    int width = mask.size.width;
+    int height = mask.size.height;
+    CGContextRef context = CGBitmapContextCreate(NULL, width, height, 8, width, colorSpace, (CGBitmapInfo)kCGImageAlphaNone);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), mask.CGImage);
+    CGImageRef imageRef = CGBitmapContextCreateImage(context);
+    CGContextRelease(context);
+    // 传出灰度图片，结束灰度加工
+    UIImage *output = [UIImage imageWithCGImage:imageRef];
+    
+    //开始切割
+    CGContextRef context1 = UIGraphicsGetCurrentContext();
+    CGContextClipToMask(context1, CGRectMake(0, 0, width, height), output.CGImage);
+    
+    [img drawInRect:CGRectMake(0, 0, width, height)];
+    UIImage *content = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CGImageRelease(imageRef);
+    CGColorSpaceRelease(colorSpace);
+    return content;
+}
 
 //end
 //for 1st - 3rd zone

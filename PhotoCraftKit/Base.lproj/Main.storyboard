@@ -476,7 +476,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xlg-Md-XsA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="700" height="90"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="800" height="90"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpy-dO-X83">
                                                                 <rect key="frame" x="20" y="0.0" width="70" height="90"/>
@@ -528,8 +528,8 @@
                                                                     <action selector="getClipImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hz1-9e-gaF"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" tag="604" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZU-RO-fCZ">
-                                                                <rect key="frame" x="500" y="30" width="46" height="30"/>
+                                                            <button opaque="NO" tag="604" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZU-RO-fCZ">
+                                                                <rect key="frame" x="520" y="10" width="70" height="70"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="70" id="c2U-N3-ldX"/>
                                                                 </constraints>
@@ -538,22 +538,22 @@
                                                                     <action selector="getClipImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qGD-E1-axB"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" tag="605" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSH-5E-d2w">
-                                                                <rect key="frame" x="600" y="30" width="46" height="30"/>
+                                                            <button opaque="NO" tag="605" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSH-5E-d2w">
+                                                                <rect key="frame" x="528" y="-55" width="254" height="200"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="70" id="Fx4-P2-6VI"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button"/>
+                                                                <state key="normal" title="Button" image="sunShape"/>
                                                                 <connections>
                                                                     <action selector="getClipImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hex-Bt-hYF"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" tag="606" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPM-zx-H7Q">
-                                                                <rect key="frame" x="700" y="30" width="46" height="30"/>
+                                                            <button opaque="NO" tag="606" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPM-zx-H7Q">
+                                                                <rect key="frame" x="720" y="10" width="70" height="70"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="70" id="QCz-6q-I1p"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button"/>
+                                                                <state key="normal" title="Button" image="tatto"/>
                                                                 <connections>
                                                                     <action selector="getClipImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u1S-9d-m0s"/>
                                                                 </connections>
@@ -585,7 +585,7 @@
                                                             <constraint firstItem="WFX-KT-QBX" firstAttribute="leading" secondItem="7E8-BR-DmH" secondAttribute="trailing" constant="30" id="vRl-dk-8Id"/>
                                                             <constraint firstAttribute="bottom" secondItem="7GV-f4-8Hg" secondAttribute="bottom" constant="10" id="vyn-Fr-cKI"/>
                                                             <constraint firstItem="qpy-dO-X83" firstAttribute="leading" secondItem="Xlg-Md-XsA" secondAttribute="leading" constant="20" id="yDT-p3-AB2"/>
-                                                            <constraint firstAttribute="width" constant="700" id="yeN-em-J6B"/>
+                                                            <constraint firstAttribute="width" constant="800" id="yeN-em-J6B"/>
                                                             <constraint firstItem="KZU-RO-fCZ" firstAttribute="top" secondItem="Xlg-Md-XsA" secondAttribute="top" constant="10" id="zV0-vP-6W0"/>
                                                         </constraints>
                                                     </view>
@@ -1858,6 +1858,8 @@
         <image name="shadowIcon" width="80" height="80"/>
         <image name="shareIcon" width="80" height="80"/>
         <image name="star" width="40" height="40"/>
+        <image name="sunShape" width="200" height="200"/>
+        <image name="tatto" width="200" height="200"/>
         <image name="triangle" width="80" height="80"/>
     </resources>
 </document>
