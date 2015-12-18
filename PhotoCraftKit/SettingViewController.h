@@ -48,7 +48,8 @@
 @property(assign, nonatomic)BOOL isDrawingZone;
 @property(assign, nonatomic)BOOL isPatternZone;
 @property(assign, nonatomic)BOOL isPhotoZone;
-
+@property(assign, nonatomic)BOOL isPhotoDistortZone;
+@property(assign, nonatomic)BOOL isPhotoClipZone;
 //1st photo pane
 @property(assign, nonatomic)CGFloat effectIntensity;
 @property (weak, nonatomic) IBOutlet UISlider *effectIntensitySlider;

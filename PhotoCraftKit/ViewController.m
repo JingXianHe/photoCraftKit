@@ -11,7 +11,7 @@
 #import "UIBezierPathPool.h"
 
 @interface ViewController ()<SettingViewControllerDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-
+@property(nonatomic, assign)CGRect currentImgRect;
 @property(nonatomic, assign)BOOL navigationBarIsOpen;
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -170,7 +170,9 @@
     // 1.取出选中的图片
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     // 2.添加图片到相册中
-    UIImageView *realImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:image]];
+    CGRect tempRect = [self imageAdjust4Screen:image];
+    self.currentImgRect = self.TempImageView.frame;
+    UIImageView *realImgView = [[UIImageView alloc]initWithFrame:tempRect];
     realImgView.contentMode = UIViewContentModeScaleAspectFill;
     realImgView.image = image;
     if (self.edittingImgView) {
@@ -182,12 +184,20 @@
     self.backupImgView = realImgView;
     self.backupImgView.hidden = YES;
     
-    UIImageView *tempImgView = [[UIImageView alloc]initWithFrame:[self imageAdjust4Screen:image]];
+    UIImageView *tempImgView = [[UIImageView alloc]initWithFrame:tempRect];
     tempImgView.contentMode = UIViewContentModeScaleAspectFill;
     tempImgView.image = image;
     [self.TempImageView addSubview:tempImgView];
     self.edittingImgView = tempImgView;
-
+    if (_isPatternZone == true || _isDrawingZone == true) {
+        self.edittingImgView.hidden = YES;
+        UIGraphicsBeginImageContext(self.currentImgRect.size);
+        [self.backupImgView.image drawInRect:self.backupImgView.frame];
+        // 5
+        UIImage *tempImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.TempImageView.image = tempImg;
+    }
 
 }
 
@@ -748,16 +758,20 @@
 //for 1st - 3rd zone
 - (IBAction)refreshScreen {
     [self rightNavigationBtnPressed];
-    if (_isPhotoZone == true||_isPhotoDistortZone == true) {
-        CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
-        
-        self.edittingImgView.image = [UIImage imageWithCIImage:ref];
+    if (_isPhotoZone == true||_isPhotoDistortZone == true||_isClipZone == true) {
+        self.edittingImgView.image = self.backupImgView.image;
+    }else if(_isDrawingZone == true || _isPatternZone == true){
+        UIGraphicsBeginImageContext(self.TempImageView.frame.size);
+        [self.backupImgView.image drawInRect:self.backupImgView.frame];
+        // 5
+        self.TempImageView.image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
     }
 }
 
 - (IBAction)saveEditingImage {
     [self rightNavigationBtnPressed];
-    if (_isPhotoZone == true || _isPhotoDistortZone == true) {
+    if (_isPhotoZone == true || _isPhotoDistortZone == true|| _isClipZone == true) {
         if(self.edittingImgView.image){
             self.backupImgView.image = self.edittingImgView.image;
             UIImageWriteToSavedPhotosAlbum(self.edittingImgView.image,nil,nil,nil);
@@ -784,20 +798,26 @@
             _isReflectionPhoto = false;
         }
         
+    }else if(_isDrawingZone == true || _isPatternZone == true){
+        
+        UIImageWriteToSavedPhotosAlbum(self.TempImageView.image,nil,nil,nil);
     }
 }
 - (IBAction)shareProduct {
     [self rightNavigationBtnPressed];
-    UIImage *myImage = self.edittingImgView.image;
-    
-    
+    UIImage *myImage;
+    if (_isPhotoZone == true || _isPhotoDistortZone == true|| _isClipZone == true) {
+        myImage = self.edittingImgView.image;
+    }else if(_isDrawingZone == true || _isPatternZone == true){
+        myImage = self.TempImageView.image;
+    }
+
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[myImage]
      applicationActivities:nil];
     
     [self presentViewController:controller animated:YES completion:nil];
     
     UIPopoverPresentationController *presentationController = [controller popoverPresentationController];
-    
     presentationController.sourceView = self.view;
 }
 
@@ -819,15 +839,14 @@
     self.drawingPaneToolBar.hidden = YES;
     self.photoClipToolbar.hidden = YES;
 }
--(void)viewWillAppear:(BOOL)animated{
-    
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)enterDrawingContext {
+    [self checkPreviousWorkingZone:false];
     [self closeAllContextToolBars];
     [self navigationPressed];
     [self initAllZoneTag];
@@ -836,6 +855,7 @@
 }
 
 - (IBAction)enterPhotoEdit {
+    [self checkPreviousWorkingZone:true];
     [self closeAllContextToolBars];
     [self navigationPressed];
     [self initAllZoneTag];
@@ -844,6 +864,7 @@
 }
 
 - (IBAction)enterPatternZone {
+    [self checkPreviousWorkingZone:false];
     [self closeAllContextToolBars];
     [self navigationPressed];
     [self initAllZoneTag];
@@ -853,6 +874,7 @@
 
 
 - (IBAction)photoDistortBtnPressed {
+    [self checkPreviousWorkingZone:true];
     [self closeAllContextToolBars];
     [self navigationPressed];
     [self initAllZoneTag];
@@ -865,6 +887,7 @@
     
 }
 - (IBAction)enterClipZone {
+    [self checkPreviousWorkingZone:true];
     [self closeAllContextToolBars];
     [self navigationPressed];
     [self initAllZoneTag];
@@ -881,6 +904,27 @@
     _isPhotoZone = false;
     _isPhotoDistortZone = false;
     _isClipZone = false;
+}
+-(void)checkPreviousWorkingZone:(BOOL)isPhotoZone{
+    
+    if ((_isPhotoDistortZone ==true || _isClipZone==true || _isPhotoZone ==true)&&(isPhotoZone == false)) {
+        // 1
+        self.edittingImgView.hidden = YES;
+        if (self.backupImgView.image == nil) {
+            return;
+        }
+        UIGraphicsBeginImageContext(self.currentImgRect.size);
+        [self.backupImgView.image drawInRect:self.backupImgView.frame];
+        // 5
+        UIImage *tempImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.TempImageView.image = tempImg;
+        
+    }else if((_isPhotoDistortZone ==false && _isClipZone==false && _isPhotoZone ==false)&&(isPhotoZone == true)){
+        self.edittingImgView.hidden = NO;
+        self.edittingImgView.image = self.backupImgView.image;
+        self.TempImageView.image = self.RealImageView.image;
+    }
 }
 
 // for drawing panel
@@ -1134,8 +1178,9 @@
     destinationVC.isPatternZone = _isPatternZone;
     destinationVC.isPhotoZone = _isPhotoZone;
     destinationVC.isDrawingZone = _isDrawingZone;
+    destinationVC.isPhotoClipZone = _isClipZone;
+    destinationVC.isPhotoDistortZone = _isPhotoDistortZone;
 
-    
 }
 - (IBAction)rightNavigationBtnPressed {
     

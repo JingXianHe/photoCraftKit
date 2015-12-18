@@ -343,6 +343,9 @@
                                                             <constraint firstAttribute="width" constant="70" id="tpj-PM-bQp"/>
                                                         </constraints>
                                                         <state key="normal" image="pickPhoto"/>
+                                                        <connections>
+                                                            <action selector="pickPhoto" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zt4-cS-ryb"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHx-s6-L8A" userLabel="Black">
                                                         <rect key="frame" x="120" y="0.0" width="70" height="90"/>
@@ -916,8 +919,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Veo-ZC-Ign">
                                 <rect key="frame" x="0.0" y="40" width="320" height="528"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BF7-n9-trv">
-                                        <rect key="frame" x="0.0" y="-64" width="320" height="800"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF7-n9-trv" userLabel="Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EX2-Pg-5uf">
                                                 <rect key="frame" x="20" y="20" width="280" height="165"/>
@@ -1116,7 +1119,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOt-xv-ge9" userLabel="LinesView">
-                                                <rect key="frame" x="20" y="205" width="280" height="240"/>
+                                                <rect key="frame" x="20" y="20" width="280" height="240"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1s-Zj-zwl">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
@@ -1225,13 +1228,13 @@
                                                         <rect key="frame" x="0.0" y="120" width="280" height="120"/>
                                                         <subviews>
                                                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="teP-5F-dwH">
-                                                                <rect key="frame" x="-22" y="-360" width="4" height="31"/>
+                                                                <rect key="frame" x="-22" y="-180" width="4" height="31"/>
                                                             </slider>
                                                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0At-54-fdC">
-                                                                <rect key="frame" x="-22" y="-360" width="4" height="31"/>
+                                                                <rect key="frame" x="-22" y="-180" width="4" height="31"/>
                                                             </slider>
                                                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NeD-n7-lRd">
-                                                                <rect key="frame" x="-22" y="-360" width="4" height="31"/>
+                                                                <rect key="frame" x="-22" y="-180" width="4" height="31"/>
                                                             </slider>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yap-qg-Tjg">
                                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
@@ -1395,7 +1398,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uca-aZ-ewG" userLabel="UIBezierView">
-                                                <rect key="frame" x="20" y="505" width="280" height="280"/>
+                                                <rect key="frame" x="20" y="60" width="280" height="300"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHT-Zg-g5g">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
@@ -1732,7 +1735,7 @@
                                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="I5U-KL-pZZ">
                                                                 <rect key="frame" x="10" y="7" width="260" height="29"/>
                                                                 <segments>
-                                                                    <segment title="First"/>
+                                                                    <segment title="Stroke"/>
                                                                     <segment title="Fill"/>
                                                                 </segments>
                                                             </segmentedControl>
@@ -1755,7 +1758,7 @@
                                                     <constraint firstItem="YHT-Zg-g5g" firstAttribute="top" secondItem="uca-aZ-ewG" secondAttribute="top" id="QdS-A3-RQU"/>
                                                     <constraint firstItem="yxl-Xf-tbZ" firstAttribute="top" secondItem="n8H-4u-DiG" secondAttribute="bottom" id="R52-QH-MeE"/>
                                                     <constraint firstItem="aBf-rU-7qC" firstAttribute="leading" secondItem="uca-aZ-ewG" secondAttribute="leading" id="RyI-rZ-mbw"/>
-                                                    <constraint firstAttribute="height" constant="280" id="U6H-dH-MM2"/>
+                                                    <constraint firstAttribute="height" constant="300" id="U6H-dH-MM2"/>
                                                     <constraint firstItem="oSY-56-x8j" firstAttribute="top" secondItem="YHT-Zg-g5g" secondAttribute="bottom" id="Wod-ju-Nff"/>
                                                     <constraint firstAttribute="trailing" secondItem="n8H-4u-DiG" secondAttribute="trailing" id="X81-Nx-1kk"/>
                                                     <constraint firstAttribute="trailing" secondItem="oSY-56-x8j" secondAttribute="trailing" id="bVj-o1-AJI"/>
@@ -1773,7 +1776,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAs-PA-Bpc">
-                                                <rect key="frame" x="20" y="465" width="280" height="40"/>
+                                                <rect key="frame" x="20" y="20" width="280" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pattern Setting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uK2-wR-cDa">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
@@ -1794,19 +1797,19 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="sAs-PA-Bpc" firstAttribute="top" secondItem="zOt-xv-ge9" secondAttribute="bottom" constant="20" id="4Rq-y3-x9N"/>
-                                            <constraint firstItem="zOt-xv-ge9" firstAttribute="top" secondItem="EX2-Pg-5uf" secondAttribute="bottom" constant="20" id="6XX-0I-hna"/>
+                                            <constraint firstAttribute="trailing" secondItem="sAs-PA-Bpc" secondAttribute="trailing" constant="20" id="77P-uS-i8R"/>
+                                            <constraint firstItem="uca-aZ-ewG" firstAttribute="top" secondItem="sAs-PA-Bpc" secondAttribute="bottom" id="9X7-dw-yio"/>
                                             <constraint firstAttribute="height" constant="800" id="AtY-bf-sJO"/>
+                                            <constraint firstItem="zOt-xv-ge9" firstAttribute="top" secondItem="BF7-n9-trv" secondAttribute="top" constant="20" id="Fwl-ze-DCX"/>
                                             <constraint firstItem="sAs-PA-Bpc" firstAttribute="leading" secondItem="BF7-n9-trv" secondAttribute="leading" constant="20" id="Jy7-Kc-L9e"/>
                                             <constraint firstAttribute="trailing" secondItem="uca-aZ-ewG" secondAttribute="trailing" constant="20" id="MEi-Ez-9Ph"/>
-                                            <constraint firstItem="uca-aZ-ewG" firstAttribute="top" secondItem="sAs-PA-Bpc" secondAttribute="bottom" id="N1h-yd-elq"/>
+                                            <constraint firstItem="sAs-PA-Bpc" firstAttribute="top" secondItem="BF7-n9-trv" secondAttribute="top" constant="20" id="TIm-zd-Z7F"/>
                                             <constraint firstItem="EX2-Pg-5uf" firstAttribute="top" secondItem="BF7-n9-trv" secondAttribute="top" constant="20" id="TMY-pq-CHW"/>
                                             <constraint firstItem="uca-aZ-ewG" firstAttribute="leading" secondItem="BF7-n9-trv" secondAttribute="leading" constant="20" id="VG5-Vm-4FP"/>
                                             <constraint firstAttribute="trailing" secondItem="EX2-Pg-5uf" secondAttribute="trailing" constant="20" id="Zj5-gl-WtQ"/>
                                             <constraint firstItem="EX2-Pg-5uf" firstAttribute="leading" secondItem="BF7-n9-trv" secondAttribute="leading" constant="20" id="eKm-qY-MEX"/>
                                             <constraint firstAttribute="trailing" secondItem="zOt-xv-ge9" secondAttribute="trailing" constant="20" id="mHb-WB-jIF"/>
                                             <constraint firstItem="zOt-xv-ge9" firstAttribute="leading" secondItem="BF7-n9-trv" secondAttribute="leading" constant="20" id="opu-HH-gnC"/>
-                                            <constraint firstAttribute="trailing" secondItem="sAs-PA-Bpc" secondAttribute="trailing" constant="20" id="sgX-iP-j0m"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1844,9 +1847,9 @@
                         <outlet property="fillOrStroke" destination="I5U-KL-pZZ" id="Ayn-Gp-aD7"/>
                         <outlet property="greenLabel" destination="byG-pZ-2lq" id="OoN-uZ-Yxa"/>
                         <outlet property="greenSlide" destination="KQL-PW-OzT" id="uBH-VG-01y"/>
-                        <outlet property="lineSetting" destination="sTt-qM-pUn" id="lpp-YA-yuD"/>
-                        <outlet property="patternSetting" destination="U6H-dH-MM2" id="aFz-Yi-9ck"/>
-                        <outlet property="photoEffect" destination="Zsc-WF-Ygb" id="cEE-Zh-TOj"/>
+                        <outlet property="lineParamSetting" destination="zOt-xv-ge9" id="29q-K4-GWJ"/>
+                        <outlet property="patternParamSetting" destination="uca-aZ-ewG" id="MsY-qA-JRn"/>
+                        <outlet property="photoEffectSetting" destination="EX2-Pg-5uf" id="lbX-rJ-yYo"/>
                         <outlet property="redLabel" destination="QTM-WZ-teU" id="lbz-Kd-zvn"/>
                         <outlet property="redSlide" destination="81h-w2-IFg" id="klz-JX-kVe"/>
                         <outlet property="sizePicker" destination="iQe-uq-csL" id="RMo-cm-0WM"/>

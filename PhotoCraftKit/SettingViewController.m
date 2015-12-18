@@ -12,11 +12,11 @@
 @interface SettingViewController ()
 - (IBAction)closeCurrentPanel;
 - (IBAction)selectedPattern:(UIButton *)sender;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *photoEffect;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineSetting;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *patternSetting;
 
+@property (weak, nonatomic) IBOutlet UIView *photoEffectSetting;
 
+@property (weak, nonatomic) IBOutlet UIView *lineParamSetting;
+@property (weak, nonatomic) IBOutlet UIView *patternParamSetting;
 
 @end
 
@@ -47,7 +47,19 @@
     self.fillOrStroke.selectedSegmentIndex = (long)self.isFill;
     self.distantPicker.value = self.distance;
     self.strokeWidth.value = self.lineWidth;
-    
+    if (self.isPhotoDistortZone == YES || self.isPhotoClipZone == YES || self.isPhotoZone == YES) {
+        self.photoEffectSetting.hidden = NO;
+        self.lineParamSetting.hidden = YES;
+        self.patternParamSetting.hidden = YES;
+    }else if(self.isPatternZone == YES){
+        self.photoEffectSetting.hidden = YES;
+        self.lineParamSetting.hidden = YES;
+        self.patternParamSetting.hidden = NO;
+    }else{
+        self.photoEffectSetting.hidden = YES;
+        self.lineParamSetting.hidden = NO;
+        self.patternParamSetting.hidden = YES;
+    }
     
     //set up 1st pane
     self.effectIntensitySlider.value = self.effectIntensity;
