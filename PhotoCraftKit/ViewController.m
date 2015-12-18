@@ -41,11 +41,16 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *drawingPaneToolBar;
 
 //end
+//photoEffectToolbar
+@property (weak, nonatomic) IBOutlet UIView *photoEffectToolbar;
+
+//end
 //photoClipToolbar
 @property (weak, nonatomic) IBOutlet UIView *photoClipToolbar;
 
 
 //end
+
 //right navigation pane right constraint
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightNavigationConstraint;
 @property(nonatomic, assign)BOOL rightNavigationPaneIsOpen;
@@ -59,7 +64,7 @@
 @implementation ViewController
 
 - (IBAction)navigationPressed {
-    if (self.navigationBarIsOpen == NO) {
+    if (self.navigationBarIsOpen == false) {
         _isDrawingZone = NO;
         _isPatternZone = NO;
         [self.navigationView setNeedsLayout];
@@ -67,6 +72,7 @@
         self.navigationLeading.constant = 0;
         self.contentView.userInteractionEnabled = NO;
         self.navigationView.userInteractionEnabled = NO;
+        
         [UIView animateWithDuration:1.8f animations:^{
             [self.navigationView layoutIfNeeded];
             [self.contentView layoutIfNeeded];
@@ -98,7 +104,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationBarIsOpen = NO;
+    self.navigationBarIsOpen = false;
     _opacity = 1.0;
     _brushWidth = 5.0;
     _isDrawingZone = false;
@@ -203,6 +209,9 @@
 #pragma endAlertView Delegate
 //fist panel zone
 - (IBAction)pickPhoto {
+    if (self.navigationBarIsOpen == YES) {
+        return;
+    }
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
     
     UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
@@ -213,7 +222,9 @@
 
 
 - (IBAction)photoEffectBtnClick:(UIButton *)sender {
-    
+    if (self.navigationBarIsOpen == YES) {
+        return;
+    }
     if (sender.tag == 300) {
         CIFilter *sepia = [CIFilter filterWithName:@"CISepiaTone"];
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
@@ -391,6 +402,9 @@
 //2nd pane
 
 - (IBAction)photoDistortPressed:(UIButton *)sender {
+    if (self.navigationBarIsOpen == YES) {
+        return;
+    }
     if (self.backupImgView.image == nil) {
         return;
     }
@@ -548,6 +562,9 @@
 //end
 //3rd zone
 - (IBAction)getClipImg:(UIButton *)sender {
+    if (self.navigationBarIsOpen == YES) {
+        return;
+    }
     CGSize imgSize = self.backupImgView.frame.size;
     CGFloat minLength = imgSize.width > imgSize.height ? imgSize.height:imgSize.width;
     CGRect drawRect = CGRectMake(0, 0, imgSize.width, imgSize.height);
@@ -797,6 +814,7 @@
 }
 
 -(void)closeAllContextToolBars{
+    self.photoEffectToolbar.hidden = YES;
     self.photoDistortPaneToolbar.hidden = YES;
     self.drawingPaneToolBar.hidden = YES;
     self.photoClipToolbar.hidden = YES;
@@ -822,6 +840,7 @@
     [self navigationPressed];
     [self initAllZoneTag];
     _isPhotoZone = true;
+    self.photoEffectToolbar.hidden = NO;
 }
 
 - (IBAction)enterPatternZone {
@@ -863,6 +882,7 @@
     _isPhotoDistortZone = false;
     _isClipZone = false;
 }
+
 // for drawing panel
 -(NSMutableArray *)colors{
     if (_colors == nil) {
