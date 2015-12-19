@@ -18,6 +18,8 @@
 		FF5EBA051BFC2F7400E2378C /* PhotoCraftKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA041BFC2F7400E2378C /* PhotoCraftKitUITests.m */; };
 		FF5EBA191BFC77CA00E2378C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA181BFC77CA00E2378C /* SettingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		FF85F41F1C12E6FD00105662 /* iron_texture637.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF85F41E1C12E6FD00105662 /* iron_texture637.jpg */; settings = {ASSET_TAGS = (); }; };
+		FFC9F4801C2517A4004E17D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC9F4821C2517A4004E17D3 /* InfoPlist.strings */; };
+		FFC9F4861C251D98004E17D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC9F4881C251D98004E17D3 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,12 @@
 		FF5EBA171BFC77CA00E2378C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		FF5EBA181BFC77CA00E2378C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		FF85F41E1C12E6FD00105662 /* iron_texture637.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iron_texture637.jpg; sourceTree = "<group>"; };
+		FFC9F47E1C251792004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		FFC9F47F1C251792004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		FFC9F4811C2517A4004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		FFC9F4831C2517A6004E17D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FFC9F4871C251D98004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FFC9F4891C251D9D004E17D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +125,13 @@
 				FF5EB9EB1BFC2F7400E2378C /* Assets.xcassets */,
 				FF5EB9ED1BFC2F7400E2378C /* LaunchScreen.storyboard */,
 				FF5EB9F01BFC2F7400E2378C /* Info.plist */,
+				FFC9F4821C2517A4004E17D3 /* InfoPlist.strings */,
 				FF5EB9DF1BFC2F7400E2378C /* Supporting Files */,
 				FF5EBA171BFC77CA00E2378C /* SettingViewController.h */,
 				FF5EBA181BFC77CA00E2378C /* SettingViewController.m */,
 				FF582B621C06E089007D0ED1 /* UIBezierPathPool.h */,
 				FF582B631C06E089007D0ED1 /* UIBezierPathPool.m */,
+				FFC9F4881C251D98004E17D3 /* Localizable.strings */,
 			);
 			path = PhotoCraftKit;
 			sourceTree = "<group>";
@@ -258,9 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF5EB9EF1BFC2F7400E2378C /* LaunchScreen.storyboard in Resources */,
+				FFC9F4861C251D98004E17D3 /* Localizable.strings in Resources */,
 				FF5EB9EC1BFC2F7400E2378C /* Assets.xcassets in Resources */,
 				FF85F41F1C12E6FD00105662 /* iron_texture637.jpg in Resources */,
 				FF5EB9EA1BFC2F7400E2378C /* Main.storyboard in Resources */,
+				FFC9F4801C2517A4004E17D3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +341,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FF5EB9E91BFC2F7400E2378C /* Base */,
+				FFC9F47E1C251792004E17D3 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -337,8 +350,28 @@
 			isa = PBXVariantGroup;
 			children = (
 				FF5EB9EE1BFC2F7400E2378C /* Base */,
+				FFC9F47F1C251792004E17D3 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FFC9F4821C2517A4004E17D3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFC9F4811C2517A4004E17D3 /* zh-Hans */,
+				FFC9F4831C2517A6004E17D3 /* en */,
+			);
+			name = InfoPlist.strings;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FFC9F4881C251D98004E17D3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFC9F4871C251D98004E17D3 /* zh-Hans */,
+				FFC9F4891C251D9D004E17D3 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

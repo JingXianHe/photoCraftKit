@@ -138,11 +138,11 @@
     //set up right navigation pane
     self.rightNavigationPaneIsOpen = NO;
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Pick a photo"
-                                                    message:@"Please select a photo for editting"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"title", @"Pick a photo")
+                                                    message: NSLocalizedString(@"message", @"Please select a photo for editting")
                                                    delegate:self
-                                          cancelButtonTitle:@"Cancel"
-                                          otherButtonTitles:@"OK", nil   ];
+                                          cancelButtonTitle:NSLocalizedString(@"cancel", @"Cancel")
+                                          otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil   ];
     alert.delegate = self;
     [alert show];
     

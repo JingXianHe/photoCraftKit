@@ -1,0 +1,141 @@
+
+/* Class = "UIButton"; normalTitle = "Share"; ObjectID = "4jx-Cz-Eq1"; */
+"4jx-Cz-Eq1.normalTitle" = "Share";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "4xY-9m-Iqk"; */
+"4xY-9m-Iqk.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "5lq-fV-8SS"; */
+"5lq-fV-8SS.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7E8-BR-DmH"; */
+"7E8-BR-DmH.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7GV-f4-8Hg"; */
+"7GV-f4-8Hg.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "9oQ-O0-yV2"; */
+"9oQ-O0-yV2.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "B"; ObjectID = "CRh-4O-Xzk"; */
+"CRh-4O-Xzk.text" = "蓝";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "CSH-5E-d2w"; */
+"CSH-5E-d2w.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Brush"; ObjectID = "D4l-5f-0cu"; */
+"D4l-5f-0cu.text" = "宽度";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "FB2-SZ-GYr"; */
+"FB2-SZ-GYr.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Distant"; ObjectID = "HZ3-OC-pZq"; */
+"HZ3-OC-pZq.text" = "距离";
+
+/* Class = "UISegmentedControl"; I5U-KL-pZZ.segmentTitles[0] = "Stroke"; ObjectID = "I5U-KL-pZZ"; */
+"I5U-KL-pZZ.segmentTitles[0]" = "描边";
+
+/* Class = "UISegmentedControl"; I5U-KL-pZZ.segmentTitles[1] = "Fill"; ObjectID = "I5U-KL-pZZ"; */
+"I5U-KL-pZZ.segmentTitles[1]" = "填充";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "K1e-WB-PCq"; */
+"K1e-WB-PCq.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "KDc-vI-FKC"; */
+"KDc-vI-FKC.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Setting Panel"; ObjectID = "KQU-Qd-Yb6"; */
+"KQU-Qd-Yb6.text" = "参数设置面板";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "KZU-RO-fCZ"; */
+"KZU-RO-fCZ.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Intensity"; ObjectID = "L66-Hp-c3c"; */
+"L66-Hp-c3c.text" = "强度";
+
+/* Class = "UILabel"; text = "Photo Effect Setting"; ObjectID = "Mzl-tK-MTz"; */
+"Mzl-tK-MTz.text" = "图片效果设置";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "QTM-WZ-teU"; */
+"QTM-WZ-teU.text" = "1.0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "SjM-OW-ans"; */
+"SjM-OW-ans.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "10.0"; ObjectID = "UJo-qT-BKD"; */
+"UJo-qT-BKD.text" = "10.0";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "Ubp-NA-eQb"; */
+"Ubp-NA-eQb.text" = "1.0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "WFX-KT-QBX"; */
+"WFX-KT-QBX.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Zh1-2o-Fjz"; */
+"Zh1-2o-Fjz.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "afy-1h-9dD"; */
+"afy-1h-9dD.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "aym-PT-7AF"; */
+"aym-PT-7AF.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "5.0"; ObjectID = "byG-pZ-2lq"; */
+"byG-pZ-2lq.text" = "5.0";
+
+/* Class = "UILabel"; text = "Line Setting"; ObjectID = "cIW-wf-g0k"; */
+"cIW-wf-g0k.text" = "线条设定";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "e1M-Di-gno"; */
+"e1M-Di-gno.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "fqb-l2-V0N"; */
+"fqb-l2-V0N.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "R"; ObjectID = "hSz-FS-2zJ"; */
+"hSz-FS-2zJ.text" = "红";
+
+/* Class = "UISegmentedControl"; iQe-uq-csL.segmentTitles[0] = "small"; ObjectID = "iQe-uq-csL"; */
+"iQe-uq-csL.segmentTitles[0]" = "小";
+
+/* Class = "UISegmentedControl"; iQe-uq-csL.segmentTitles[1] = "medium"; ObjectID = "iQe-uq-csL"; */
+"iQe-uq-csL.segmentTitles[1]" = "中";
+
+/* Class = "UISegmentedControl"; iQe-uq-csL.segmentTitles[2] = "large"; ObjectID = "iQe-uq-csL"; */
+"iQe-uq-csL.segmentTitles[2]" = "大";
+
+/* Class = "UILabel"; text = "G"; ObjectID = "j5q-XS-bUM"; */
+"j5q-XS-bUM.text" = "绿";
+
+/* Class = "UIButton"; normalTitle = "Menu"; ObjectID = "mBR-QQ-CQ9"; */
+"mBR-QQ-CQ9.normalTitle" = "Menu";
+
+/* Class = "UIButton"; normalTitle = "Setting"; ObjectID = "oTw-4s-qNg"; */
+"oTw-4s-qNg.normalTitle" = "Setting";
+
+/* Class = "UILabel"; text = "Width"; ObjectID = "onZ-SM-Mqq"; */
+"onZ-SM-Mqq.text" = "宽度";
+
+/* Class = "UILabel"; text = "Color for MonoChrome"; ObjectID = "qho-L8-PWi"; */
+"qho-L8-PWi.text" = "单色图片滤镜选择色";
+
+/* Class = "UILabel"; text = "Alpha"; ObjectID = "quz-XW-oMs"; */
+"quz-XW-oMs.text" = "透明";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "s7P-6J-jk7"; */
+"s7P-6J-jk7.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "tPM-zx-H7Q"; */
+"tPM-zx-H7Q.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "5.0"; ObjectID = "tiL-MF-5gL"; */
+"tiL-MF-5gL.text" = "5.0";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "tzV-Pr-McN"; */
+"tzV-Pr-McN.normalTitle" = "关闭";
+
+/* Class = "UILabel"; text = "Pattern Setting"; ObjectID = "uK2-wR-cDa"; */
+"uK2-wR-cDa.text" = "效果设置面板";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zGG-kp-kgm"; */
+"zGG-kp-kgm.normalTitle" = "Button";

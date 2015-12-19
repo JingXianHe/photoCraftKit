@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  PhotoCraftKit
+
+  Created by beihaiSellshou on 12/19/15.
+  Copyright © 2015 JXHDev. All rights reserved.
+*/
+"title" = "选择图片";
+"message" = "请从图库中选取一张图片";
+"cancel" = "取消";
+"ok" = "确定";

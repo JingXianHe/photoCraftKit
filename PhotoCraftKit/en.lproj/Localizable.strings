@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  PhotoCraftKit
+
+  Created by beihaiSellshou on 12/19/15.
+  Copyright © 2015 JXHDev. All rights reserved.
+*/
+"title" = "Pick a photo";
+"message" = "Please select a photo for editting";
+"cancel" = "Cancel";
+"ok" = "OK";
