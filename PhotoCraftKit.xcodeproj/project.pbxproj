@@ -18,6 +18,8 @@
 		FF5EBA051BFC2F7400E2378C /* PhotoCraftKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA041BFC2F7400E2378C /* PhotoCraftKitUITests.m */; };
 		FF5EBA191BFC77CA00E2378C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA181BFC77CA00E2378C /* SettingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		FF85F41F1C12E6FD00105662 /* iron_texture637.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF85F41E1C12E6FD00105662 /* iron_texture637.jpg */; settings = {ASSET_TAGS = (); }; };
+		FF8F95AB1C29016E00EFDEDE /* OpenSceneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8F95AA1C29016E00EFDEDE /* OpenSceneController.xib */; settings = {ASSET_TAGS = (); }; };
+		FF8F95AE1C29030C00EFDEDE /* OpenSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F95AD1C29030C00EFDEDE /* OpenSceneController.m */; settings = {ASSET_TAGS = (); }; };
 		FFC9F4801C2517A4004E17D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC9F4821C2517A4004E17D3 /* InfoPlist.strings */; };
 		FFC9F4861C251D98004E17D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC9F4881C251D98004E17D3 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,9 @@
 		FF5EBA171BFC77CA00E2378C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		FF5EBA181BFC77CA00E2378C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		FF85F41E1C12E6FD00105662 /* iron_texture637.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iron_texture637.jpg; sourceTree = "<group>"; };
+		FF8F95AA1C29016E00EFDEDE /* OpenSceneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenSceneController.xib; sourceTree = "<group>"; };
+		FF8F95AC1C29030C00EFDEDE /* OpenSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenSceneController.h; sourceTree = "<group>"; };
+		FF8F95AD1C29030C00EFDEDE /* OpenSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenSceneController.m; sourceTree = "<group>"; };
 		FFC9F47E1C251792004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		FFC9F47F1C251792004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FFC9F4811C2517A4004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 		FF5EB9DE1BFC2F7400E2378C /* PhotoCraftKit */ = {
 			isa = PBXGroup;
 			children = (
+				FF8F95A91C2900E500EFDEDE /* OpeningScentInfo */,
 				FF5EB9E21BFC2F7400E2378C /* AppDelegate.h */,
 				FF5EB9E31BFC2F7400E2378C /* AppDelegate.m */,
 				FF5EB9E51BFC2F7400E2378C /* ViewController.h */,
@@ -161,6 +167,16 @@
 				FF5EBA061BFC2F7400E2378C /* Info.plist */,
 			);
 			path = PhotoCraftKitUITests;
+			sourceTree = "<group>";
+		};
+		FF8F95A91C2900E500EFDEDE /* OpeningScentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				FF8F95AA1C29016E00EFDEDE /* OpenSceneController.xib */,
+				FF8F95AC1C29030C00EFDEDE /* OpenSceneController.h */,
+				FF8F95AD1C29030C00EFDEDE /* OpenSceneController.m */,
+			);
+			name = OpeningScentInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +285,7 @@
 			files = (
 				FF5EB9EF1BFC2F7400E2378C /* LaunchScreen.storyboard in Resources */,
 				FFC9F4861C251D98004E17D3 /* Localizable.strings in Resources */,
+				FF8F95AB1C29016E00EFDEDE /* OpenSceneController.xib in Resources */,
 				FF5EB9EC1BFC2F7400E2378C /* Assets.xcassets in Resources */,
 				FF85F41F1C12E6FD00105662 /* iron_texture637.jpg in Resources */,
 				FF5EB9EA1BFC2F7400E2378C /* Main.storyboard in Resources */,
@@ -299,6 +316,7 @@
 			files = (
 				FF5EB9E71BFC2F7400E2378C /* ViewController.m in Sources */,
 				FF5EB9E41BFC2F7400E2378C /* AppDelegate.m in Sources */,
+				FF8F95AE1C29030C00EFDEDE /* OpenSceneController.m in Sources */,
 				FF5EB9E11BFC2F7400E2378C /* main.m in Sources */,
 				FF582B641C06E089007D0ED1 /* UIBezierPathPool.m in Sources */,
 				FF5EBA191BFC77CA00E2378C /* SettingViewController.m in Sources */,

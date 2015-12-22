@@ -73,7 +73,7 @@
         self.contentView.userInteractionEnabled = NO;
         self.navigationView.userInteractionEnabled = NO;
         
-        [UIView animateWithDuration:1.8f animations:^{
+        [UIView animateWithDuration:0.8f animations:^{
             [self.navigationView layoutIfNeeded];
             [self.contentView layoutIfNeeded];
         } completion:^(BOOL finished) {
@@ -88,7 +88,7 @@
         self.navigationLeading.constant = -90.0;
         self.contentView.userInteractionEnabled = NO;
         self.navigationView.userInteractionEnabled = NO;
-        [UIView animateWithDuration:1.8f animations:^{
+        [UIView animateWithDuration:0.8f animations:^{
             [self.navigationView layoutIfNeeded];
             [self.contentView layoutIfNeeded];
         } completion:^(BOOL finished) {
@@ -811,6 +811,9 @@
     }else if(_isDrawingZone == true || _isPatternZone == true){
         myImage = self.TempImageView.image;
     }
+    if (myImage == nil) {
+        return;
+    }
 
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[myImage]
      applicationActivities:nil];
@@ -1190,7 +1193,7 @@
         self.rightNavigationConstraint.constant = 0;
         self.contentView.userInteractionEnabled = NO;
         self.rightNavigationPane.userInteractionEnabled = NO;
-        [UIView animateWithDuration:1.8f animations:^{
+        [UIView animateWithDuration:0.8f animations:^{
             [self.rightNavigationPane layoutIfNeeded];
             
         } completion:^(BOOL finished) {
@@ -1204,7 +1207,7 @@
         self.rightNavigationConstraint.constant = -90.0;
         self.contentView.userInteractionEnabled = NO;
         self.rightNavigationPane.userInteractionEnabled = NO;
-        [UIView animateWithDuration:1.8f animations:^{
+        [UIView animateWithDuration:0.8f animations:^{
             [self.rightNavigationPane layoutIfNeeded];
             
         } completion:^(BOOL finished) {

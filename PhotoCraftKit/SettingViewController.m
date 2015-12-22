@@ -15,6 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *photoEffectSetting;
 
+@property (weak, nonatomic) IBOutlet UIView *patternSelectLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *lineParamSetting;
 @property (weak, nonatomic) IBOutlet UIView *patternParamSetting;
 
@@ -51,14 +53,17 @@
         self.photoEffectSetting.hidden = NO;
         self.lineParamSetting.hidden = YES;
         self.patternParamSetting.hidden = YES;
+        self.patternSelectLabel.hidden = YES;
     }else if(self.isPatternZone == YES){
         self.photoEffectSetting.hidden = YES;
         self.lineParamSetting.hidden = YES;
         self.patternParamSetting.hidden = NO;
+        self.patternSelectLabel.hidden = NO;
     }else{
         self.photoEffectSetting.hidden = YES;
         self.lineParamSetting.hidden = NO;
         self.patternParamSetting.hidden = YES;
+        self.patternSelectLabel.hidden = YES;
     }
     
     //set up 1st pane

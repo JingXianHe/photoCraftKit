@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeLand" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,39 +23,39 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDw-kL-cN1" userLabel="TitleView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTw-4s-qNg">
-                                                <rect key="frame" x="130" y="0.0" width="60" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTw-4s-qNg">
+                                                <rect key="frame" x="145" y="5" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="dak-Bt-6db"/>
-                                                    <constraint firstAttribute="height" constant="40" id="m1w-Tz-tEu"/>
+                                                    <constraint firstAttribute="width" constant="30" id="dak-Bt-6db"/>
+                                                    <constraint firstAttribute="height" constant="30" id="m1w-Tz-tEu"/>
                                                 </constraints>
-                                                <state key="normal" title="Setting">
+                                                <state key="normal" image="gearSetting">
                                                     <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="7K3-Hx-VUR" kind="presentation" id="6xJ-Gp-gI0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jx-Cz-Eq1">
-                                                <rect key="frame" x="260" y="0.0" width="60" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jx-Cz-Eq1">
+                                                <rect key="frame" x="275" y="3" width="35" height="35"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="a2H-Xg-WUg"/>
-                                                    <constraint firstAttribute="width" constant="60" id="nwO-Q4-dHn"/>
+                                                    <constraint firstAttribute="height" constant="35" id="a2H-Xg-WUg"/>
+                                                    <constraint firstAttribute="width" constant="35" id="nwO-Q4-dHn"/>
                                                 </constraints>
-                                                <state key="normal" title="Share">
+                                                <state key="normal" image="shareIcon-1">
                                                     <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="rightNavigationBtnPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="yt2-Ye-VXh"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBR-QQ-CQ9">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBR-QQ-CQ9">
+                                                <rect key="frame" x="10" y="5" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="1ND-96-soV"/>
-                                                    <constraint firstAttribute="height" constant="40" id="OYh-MM-G1e"/>
+                                                    <constraint firstAttribute="width" constant="30" id="1ND-96-soV"/>
+                                                    <constraint firstAttribute="height" constant="30" id="OYh-MM-G1e"/>
                                                 </constraints>
-                                                <state key="normal" title="Menu">
+                                                <state key="normal" image="navigationBtn">
                                                     <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -65,10 +65,10 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.92549019607843142" green="0.85490196078431369" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="4jx-Cz-Eq1" secondAttribute="trailing" id="0pd-oY-ALK"/>
+                                            <constraint firstAttribute="trailing" secondItem="4jx-Cz-Eq1" secondAttribute="trailing" constant="10" id="0pd-oY-ALK"/>
                                             <constraint firstItem="oTw-4s-qNg" firstAttribute="centerX" secondItem="xDw-kL-cN1" secondAttribute="centerX" id="3TW-yN-fOs"/>
                                             <constraint firstItem="4jx-Cz-Eq1" firstAttribute="centerY" secondItem="xDw-kL-cN1" secondAttribute="centerY" id="BR8-Kz-5sc"/>
-                                            <constraint firstItem="mBR-QQ-CQ9" firstAttribute="leading" secondItem="xDw-kL-cN1" secondAttribute="leading" id="FDB-hl-hdh"/>
+                                            <constraint firstItem="mBR-QQ-CQ9" firstAttribute="leading" secondItem="xDw-kL-cN1" secondAttribute="leading" constant="10" id="FDB-hl-hdh"/>
                                             <constraint firstAttribute="height" constant="40" id="bA4-dh-Nlz"/>
                                             <constraint firstItem="oTw-4s-qNg" firstAttribute="centerY" secondItem="xDw-kL-cN1" secondAttribute="centerY" id="qfq-mY-OQP"/>
                                             <constraint firstItem="mBR-QQ-CQ9" firstAttribute="centerY" secondItem="xDw-kL-cN1" secondAttribute="centerY" id="zV4-6p-hhn"/>
@@ -337,8 +337,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4k-Lj-Sjk" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="1100" height="90"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQa-y6-PT2" userLabel="PickBtn">
-                                                        <rect key="frame" x="15" y="5" width="80" height="80"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQa-y6-PT2" userLabel="PickBtn">
+                                                        <rect key="frame" x="20" y="10" width="70" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="70" id="tpj-PM-bQp"/>
                                                         </constraints>
@@ -447,8 +447,8 @@
                                                             <action selector="colorBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qxv-l2-NOG"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryR-8W-qaW">
-                                                        <rect key="frame" x="1100" y="0.0" width="70" height="90"/>
+                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryR-8W-qaW">
+                                                        <rect key="frame" x="1020" y="10" width="70" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="70" id="qwh-S2-8dp"/>
                                                         </constraints>
@@ -708,7 +708,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="70" id="hun-LH-XoF"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button" image="pattern"/>
+                                                        <state key="normal" image="pattern"/>
                                                         <connections>
                                                             <action selector="enterPatternZone" destination="BYZ-38-t0r" eventType="touchUpInside" id="m66-si-NNQ"/>
                                                         </connections>
@@ -723,12 +723,12 @@
                                                             <action selector="photoDistortBtnPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="9sa-uD-s6g"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGG-kp-kgm">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGG-kp-kgm">
                                                         <rect key="frame" x="10" y="190" width="70" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="70" id="OYY-iL-Owz"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" image="scissors"/>
                                                         <connections>
                                                             <action selector="enterClipZone" destination="BYZ-38-t0r" eventType="touchUpInside" id="7IN-MD-tBG"/>
                                                         </connections>
@@ -738,7 +738,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="70" id="SXE-3j-O1G"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button" image="IconDrawing"/>
+                                                        <state key="normal" image="IconDrawing"/>
                                                         <connections>
                                                             <action selector="enterDrawingContext" destination="BYZ-38-t0r" eventType="touchUpInside" id="mK5-hQ-e0O"/>
                                                         </connections>
@@ -820,7 +820,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.1637169906" blue="0.16874296929999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.90980392160000001" green="0.47843137250000001" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="CUy-P5-7Oi"/>
                                     <constraint firstAttribute="trailing" secondItem="5lz-4F-NtG" secondAttribute="trailing" constant="10" id="OFK-tz-2Ir"/>
@@ -1849,6 +1849,7 @@
                         <outlet property="greenSlide" destination="KQL-PW-OzT" id="uBH-VG-01y"/>
                         <outlet property="lineParamSetting" destination="zOt-xv-ge9" id="29q-K4-GWJ"/>
                         <outlet property="patternParamSetting" destination="uca-aZ-ewG" id="MsY-qA-JRn"/>
+                        <outlet property="patternSelectLabel" destination="sAs-PA-Bpc" id="XVJ-6M-2zB"/>
                         <outlet property="photoEffectSetting" destination="EX2-Pg-5uf" id="lbX-rJ-yYo"/>
                         <outlet property="redLabel" destination="QTM-WZ-teU" id="lbz-Kd-zvn"/>
                         <outlet property="redSlide" destination="81h-w2-IFg" id="klz-JX-kVe"/>
@@ -1862,23 +1863,23 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Blue" width="53" height="332"/>
-        <image name="Brown" width="53" height="332"/>
-        <image name="DarkGreen" width="53" height="332"/>
-        <image name="DarkOrange" width="53" height="332"/>
-        <image name="Eraser" width="55" height="167"/>
+        <image name="Blue" width="80" height="80"/>
+        <image name="Brown" width="80" height="80"/>
+        <image name="DarkGreen" width="80" height="80"/>
+        <image name="DarkOrange" width="80" height="80"/>
+        <image name="Eraser" width="80" height="80"/>
         <image name="GaussionBlur" width="80" height="80"/>
         <image name="Gear" width="80" height="80"/>
         <image name="Gift" width="80" height="80"/>
-        <image name="Grey" width="53" height="332"/>
+        <image name="Grey" width="80" height="80"/>
         <image name="IconDrawing" width="80" height="80"/>
         <image name="InvertIcon" width="80" height="80"/>
-        <image name="LightBlue" width="53" height="332"/>
-        <image name="LightGreen" width="53" height="332"/>
+        <image name="LightBlue" width="80" height="80"/>
+        <image name="LightGreen" width="80" height="80"/>
         <image name="Maple" width="80" height="80"/>
         <image name="Paw" width="40" height="40"/>
-        <image name="Red" width="53" height="332"/>
-        <image name="Yellow" width="53" height="332"/>
+        <image name="Red" width="80" height="80"/>
+        <image name="Yellow" width="80" height="80"/>
         <image name="blackAndWhiteIcon" width="80" height="80"/>
         <image name="blackPhotoIcon" width="80" height="80"/>
         <image name="circle" width="80" height="80"/>
@@ -1886,10 +1887,12 @@
         <image name="exposure" width="80" height="80"/>
         <image name="filmIcon" width="80" height="80"/>
         <image name="forty" width="40" height="40"/>
+        <image name="gearSetting" width="80" height="80"/>
         <image name="glassIcon" width="80" height="80"/>
         <image name="heart" width="40" height="40"/>
         <image name="monoChromeIcon" width="80" height="80"/>
         <image name="motionBlur" width="80" height="80"/>
+        <image name="navigationBtn" width="80" height="80"/>
         <image name="oldPhotoIcon" width="80" height="80"/>
         <image name="pattern" width="80" height="80"/>
         <image name="photoDistort" width="80" height="80"/>
@@ -1897,8 +1900,10 @@
         <image name="reflectionIcon" width="80" height="80"/>
         <image name="refreshIcon" width="80" height="80"/>
         <image name="saveIcon" width="80" height="80"/>
+        <image name="scissors" width="80" height="80"/>
         <image name="shadowIcon" width="80" height="80"/>
         <image name="shareIcon" width="80" height="80"/>
+        <image name="shareIcon-1" width="80" height="80"/>
         <image name="star" width="40" height="40"/>
         <image name="sunShape" width="200" height="200"/>
         <image name="tatto" width="200" height="200"/>
