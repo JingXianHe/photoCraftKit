@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "OpenSceneController.h"
+
 
 @interface AppDelegate ()
 
@@ -17,6 +19,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSString *versionKey = @"CFBundleVersion";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastVersion = [defaults objectForKey:versionKey];
+    
+    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[versionKey];
+    if ([currentVersion isEqualToString:lastVersion]) {
+        OpenSceneController *rootView = [[[NSBundle mainBundle] loadNibNamed:@"OpenSceneController" owner:self options:nil] objectAtIndex:0];
+        self.window.rootViewController = rootView;
+    }
     return YES;
 }
 

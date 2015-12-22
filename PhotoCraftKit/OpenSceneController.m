@@ -7,8 +7,10 @@
 //
 
 #import "OpenSceneController.h"
+#import "ViewController.h"
 
 @interface OpenSceneController ()
+- (IBAction)startOurJourney;
 
 @end
 
@@ -34,4 +36,13 @@
 }
 */
 
+- (IBAction)startOurJourney {
+    // 显示主控制器（HMTabBarController）
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ViewController *vc = (ViewController *)[sb instantiateViewControllerWithIdentifier:@"HomeLand"];
+    
+    // 切换控制器不要用push和modal这样会保留这个动画控制器在内存
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    window.rootViewController = vc;
+}
 @end
