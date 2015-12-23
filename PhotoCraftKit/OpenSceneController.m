@@ -10,7 +10,8 @@
 #import "ViewController.h"
 
 @interface OpenSceneController ()
-- (IBAction)startOurJourney;
+
+@property (weak, nonatomic) IBOutlet UIImageView *startYourJourney;
 
 @end
 
@@ -25,7 +26,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)viewWillAppear:(BOOL)animated{
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(startOurJourney)];
+    [self.startYourJourney addGestureRecognizer:singleTap];
 
+}
 /*
 #pragma mark - Navigation
 

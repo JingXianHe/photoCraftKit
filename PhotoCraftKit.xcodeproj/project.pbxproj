@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF582B641C06E089007D0ED1 /* UIBezierPathPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FF582B631C06E089007D0ED1 /* UIBezierPathPool.m */; settings = {ASSET_TAGS = (); }; };
+		FF582B641C06E089007D0ED1 /* UIBezierPathPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FF582B631C06E089007D0ED1 /* UIBezierPathPool.m */; };
 		FF5EB9E11BFC2F7400E2378C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EB9E01BFC2F7400E2378C /* main.m */; };
 		FF5EB9E41BFC2F7400E2378C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EB9E31BFC2F7400E2378C /* AppDelegate.m */; };
 		FF5EB9E71BFC2F7400E2378C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EB9E61BFC2F7400E2378C /* ViewController.m */; };
@@ -16,10 +16,10 @@
 		FF5EB9EF1BFC2F7400E2378C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF5EB9ED1BFC2F7400E2378C /* LaunchScreen.storyboard */; };
 		FF5EB9FA1BFC2F7400E2378C /* PhotoCraftKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EB9F91BFC2F7400E2378C /* PhotoCraftKitTests.m */; };
 		FF5EBA051BFC2F7400E2378C /* PhotoCraftKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA041BFC2F7400E2378C /* PhotoCraftKitUITests.m */; };
-		FF5EBA191BFC77CA00E2378C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA181BFC77CA00E2378C /* SettingViewController.m */; settings = {ASSET_TAGS = (); }; };
-		FF85F41F1C12E6FD00105662 /* iron_texture637.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF85F41E1C12E6FD00105662 /* iron_texture637.jpg */; settings = {ASSET_TAGS = (); }; };
-		FF8F95AB1C29016E00EFDEDE /* OpenSceneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8F95AA1C29016E00EFDEDE /* OpenSceneController.xib */; settings = {ASSET_TAGS = (); }; };
-		FF8F95AE1C29030C00EFDEDE /* OpenSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F95AD1C29030C00EFDEDE /* OpenSceneController.m */; settings = {ASSET_TAGS = (); }; };
+		FF5EBA191BFC77CA00E2378C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EBA181BFC77CA00E2378C /* SettingViewController.m */; };
+		FF85F41F1C12E6FD00105662 /* iron_texture637.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF85F41E1C12E6FD00105662 /* iron_texture637.jpg */; };
+		FF8F95AB1C29016E00EFDEDE /* OpenSceneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8F95AA1C29016E00EFDEDE /* OpenSceneController.xib */; };
+		FF8F95AE1C29030C00EFDEDE /* OpenSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F95AD1C29030C00EFDEDE /* OpenSceneController.m */; };
 		FFC9F4801C2517A4004E17D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC9F4821C2517A4004E17D3 /* InfoPlist.strings */; };
 		FFC9F4861C251D98004E17D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC9F4881C251D98004E17D3 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -66,8 +66,6 @@
 		FF8F95AA1C29016E00EFDEDE /* OpenSceneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenSceneController.xib; sourceTree = "<group>"; };
 		FF8F95AC1C29030C00EFDEDE /* OpenSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenSceneController.h; sourceTree = "<group>"; };
 		FF8F95AD1C29030C00EFDEDE /* OpenSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenSceneController.m; sourceTree = "<group>"; };
-		FFC9F47E1C251792004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		FFC9F47F1C251792004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FFC9F4811C2517A4004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FFC9F4831C2517A6004E17D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFC9F4871C251D98004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -359,7 +357,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				FF5EB9E91BFC2F7400E2378C /* Base */,
-				FFC9F47E1C251792004E17D3 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -368,7 +365,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				FF5EB9EE1BFC2F7400E2378C /* Base */,
-				FFC9F47F1C251792004E17D3 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -484,7 +480,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PhotoCraftKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tumblr.appDevTommyHo.PhotoCraftKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -499,7 +495,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PhotoCraftKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tumblr.appDevTommyHo.PhotoCraftKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

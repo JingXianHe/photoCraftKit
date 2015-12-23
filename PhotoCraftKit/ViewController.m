@@ -864,6 +864,10 @@
     [self initAllZoneTag];
     _isPhotoZone = true;
     self.photoEffectToolbar.hidden = NO;
+    if(self.edittingImgView.image){
+        self.edittingImgView.image = self.backupImgView.image;
+        
+    }
 }
 
 - (IBAction)enterPatternZone {

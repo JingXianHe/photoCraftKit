@@ -32,20 +32,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMK-mq-5QW" userLabel="JourneyView">
                                         <rect key="frame" x="960" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kI-Wr-f6W">
-                                                <rect key="frame" x="-160" y="-284" width="640" height="1136"/>
-                                                <state key="normal" image="FinalIntroPage"/>
-                                                <connections>
-                                                    <action selector="startOurJourney" destination="xNi-j1-Dp7" eventType="touchUpInside" id="QwW-Ej-9S8"/>
-                                                </connections>
-                                            </button>
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="FinalIntroPage" translatesAutoresizingMaskIntoConstraints="NO" id="JTe-u2-zUh">
+                                                <rect key="frame" x="40" y="220" width="240" height="128"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="1kI-Wr-f6W" firstAttribute="top" secondItem="TMK-mq-5QW" secondAttribute="top" id="9Bk-2b-pcs"/>
-                                            <constraint firstAttribute="trailing" secondItem="1kI-Wr-f6W" secondAttribute="trailing" id="T0X-KA-ebf"/>
-                                            <constraint firstItem="1kI-Wr-f6W" firstAttribute="leading" secondItem="TMK-mq-5QW" secondAttribute="leading" id="Y4C-km-K1s"/>
-                                            <constraint firstAttribute="bottom" secondItem="1kI-Wr-f6W" secondAttribute="bottom" id="gbu-ck-HFo"/>
+                                            <constraint firstAttribute="trailing" secondItem="JTe-u2-zUh" secondAttribute="trailing" id="9fK-e1-DbU"/>
+                                            <constraint firstItem="JTe-u2-zUh" firstAttribute="leading" secondItem="TMK-mq-5QW" secondAttribute="leading" id="TXX-EM-wJu"/>
+                                            <constraint firstAttribute="bottom" secondItem="JTe-u2-zUh" secondAttribute="bottom" id="j2k-fe-NVO"/>
+                                            <constraint firstItem="JTe-u2-zUh" firstAttribute="top" secondItem="TMK-mq-5QW" secondAttribute="top" id="wBu-nT-qLB"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1stIntroPage" translatesAutoresizingMaskIntoConstraints="NO" id="aWk-FP-zYO">
@@ -93,13 +89,16 @@
             </view>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="startYourJourney" destination="JTe-u2-zUh" id="wJS-Lv-7gi"/>
+            </connections>
             <point key="canvasLocation" x="505" y="173"/>
         </viewController>
     </objects>
     <resources>
-        <image name="1stIntroPage" width="640" height="1136"/>
-        <image name="2ndIntroPage" width="640" height="1136"/>
-        <image name="3rdIntroPage" width="640" height="1136"/>
-        <image name="FinalIntroPage" width="640" height="1136"/>
+        <image name="1stIntroPage" width="320" height="568"/>
+        <image name="2ndIntroPage" width="320" height="568"/>
+        <image name="3rdIntroPage" width="320" height="568"/>
+        <image name="FinalIntroPage" width="320" height="568"/>
     </resources>
 </document>

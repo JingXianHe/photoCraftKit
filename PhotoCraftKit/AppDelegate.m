@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "OpenSceneController.h"
-
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,8 +25,19 @@
     
     NSString *currentVersion = [NSBundle mainBundle].infoDictionary[versionKey];
     if ([currentVersion isEqualToString:lastVersion]) {
+        // 显示主控制器（HMTabBarController）
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ViewController *vc = (ViewController *)[sb instantiateViewControllerWithIdentifier:@"HomeLand"];
+        
+        // 切换控制器不要用push和modal这样会保留这个动画控制器在内存
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        window.rootViewController = vc;
+        
+    }else{
         OpenSceneController *rootView = [[[NSBundle mainBundle] loadNibNamed:@"OpenSceneController" owner:self options:nil] objectAtIndex:0];
         self.window.rootViewController = rootView;
+        [defaults setObject:currentVersion forKey:versionKey];
+        [defaults synchronize];
     }
     return YES;
 }
