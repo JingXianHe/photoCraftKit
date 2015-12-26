@@ -65,8 +65,7 @@
 
 - (IBAction)navigationPressed {
     if (self.navigationBarIsOpen == false) {
-        _isDrawingZone = NO;
-        _isPatternZone = NO;
+
         [self.navigationView setNeedsLayout];
         [self.contentView setNeedsLayout];
         self.navigationLeading.constant = 0;

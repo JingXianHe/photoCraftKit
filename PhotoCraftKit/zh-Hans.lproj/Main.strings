@@ -1,10 +1,4 @@
 
-/* Class = "UIButton"; normalTitle = "Share"; ObjectID = "4jx-Cz-Eq1"; */
-"4jx-Cz-Eq1.normalTitle" = "Share";
-
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "4xY-9m-Iqk"; */
-"4xY-9m-Iqk.normalTitle" = "Button";
-
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "5lq-fV-8SS"; */
 "5lq-fV-8SS.normalTitle" = "Button";
 
@@ -51,10 +45,10 @@
 "KZU-RO-fCZ.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Intensity"; ObjectID = "L66-Hp-c3c"; */
-"L66-Hp-c3c.text" = "强度";
+"L66-Hp-c3c.text" = "效果强度";
 
 /* Class = "UILabel"; text = "Photo Effect Setting"; ObjectID = "Mzl-tK-MTz"; */
-"Mzl-tK-MTz.text" = "图片效果设置";
+"Mzl-tK-MTz.text" = "图片效果设定";
 
 /* Class = "UILabel"; text = "1.0"; ObjectID = "QTM-WZ-teU"; */
 "QTM-WZ-teU.text" = "1.0";
@@ -89,9 +83,6 @@
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "e1M-Di-gno"; */
 "e1M-Di-gno.normalTitle" = "Button";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "fqb-l2-V0N"; */
-"fqb-l2-V0N.normalTitle" = "Button";
-
 /* Class = "UILabel"; text = "R"; ObjectID = "hSz-FS-2zJ"; */
 "hSz-FS-2zJ.text" = "红";
 
@@ -107,20 +98,14 @@
 /* Class = "UILabel"; text = "G"; ObjectID = "j5q-XS-bUM"; */
 "j5q-XS-bUM.text" = "绿";
 
-/* Class = "UIButton"; normalTitle = "Menu"; ObjectID = "mBR-QQ-CQ9"; */
-"mBR-QQ-CQ9.normalTitle" = "Menu";
-
-/* Class = "UIButton"; normalTitle = "Setting"; ObjectID = "oTw-4s-qNg"; */
-"oTw-4s-qNg.normalTitle" = "Setting";
-
 /* Class = "UILabel"; text = "Width"; ObjectID = "onZ-SM-Mqq"; */
 "onZ-SM-Mqq.text" = "宽度";
 
 /* Class = "UILabel"; text = "Color for MonoChrome"; ObjectID = "qho-L8-PWi"; */
-"qho-L8-PWi.text" = "单色图片滤镜选择色";
+"qho-L8-PWi.text" = "单色选择";
 
 /* Class = "UILabel"; text = "Alpha"; ObjectID = "quz-XW-oMs"; */
-"quz-XW-oMs.text" = "透明";
+"quz-XW-oMs.text" = "透明度";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "s7P-6J-jk7"; */
 "s7P-6J-jk7.normalTitle" = "Button";
@@ -135,7 +120,4 @@
 "tzV-Pr-McN.normalTitle" = "关闭";
 
 /* Class = "UILabel"; text = "Pattern Setting"; ObjectID = "uK2-wR-cDa"; */
-"uK2-wR-cDa.text" = "效果设置面板";
-
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zGG-kp-kgm"; */
-"zGG-kp-kgm.normalTitle" = "Button";
+"uK2-wR-cDa.text" = "图案设置";

@@ -11,56 +11,16 @@
     },
     {
       "idiom" : "iphone",
-      "filename" : "FinalIntroPage6+.png",
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
-      "scale" : "1x",
-      "height-class" : "regular"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "2x",
-      "height-class" : "regular"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "3x",
-      "height-class" : "regular"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "1x",
-      "width-class" : "regular"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "2x",
-      "width-class" : "regular"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "3x",
-      "width-class" : "regular"
-    },
-    {
-      "idiom" : "iphone",
-      "width-class" : "regular",
-      "height-class" : "regular",
+      "idiom" : "ipad",
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
-      "width-class" : "regular",
-      "height-class" : "regular",
+      "idiom" : "ipad",
+      "filename" : "finalPageIpad.png",
       "scale" : "2x"
-    },
-    {
-      "idiom" : "iphone",
-      "width-class" : "regular",
-      "height-class" : "regular",
-      "scale" : "3x"
     }
   ],
   "info" : {

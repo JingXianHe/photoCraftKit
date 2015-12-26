@@ -70,6 +70,8 @@
 		FFC9F4831C2517A6004E17D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFC9F4871C251D98004E17D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FFC9F4891C251D9D004E17D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FFF5EF4D1C2CF0FF00DD138F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		FFF5EF4F1C2CF11A00DD138F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = FF5EB9D31BFC2F7400E2378C;
 			productRefGroup = FF5EB9DD1BFC2F7400E2378C /* Products */;
@@ -357,6 +360,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FF5EB9E91BFC2F7400E2378C /* Base */,
+				FFF5EF4F1C2CF11A00DD138F /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -365,6 +369,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FF5EB9EE1BFC2F7400E2378C /* Base */,
+				FFF5EF4D1C2CF0FF00DD138F /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
