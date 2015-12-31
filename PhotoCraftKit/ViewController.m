@@ -435,13 +435,16 @@
         CGImageRelease(cgimg);
         self.edittingImgView.image = newImage;
     }else if(sender.tag == 501){
-        CIFilter *filter = [CIFilter filterWithName:@"CIZoomBlur"];
+        CIFilter *filter = [CIFilter filterWithName:@"CIDotScreen"];
         
         CIImage *ref = [CIImage imageWithCGImage:self.backupImgView.image.CGImage];
         [filter setValue:ref forKey:kCIInputImageKey];
-        CIVector *centerVector = [CIVector vectorWithX:0 Y:0];
+        CGSize imgSize = self.backupImgView.image.size;
+        CIVector *centerVector = [CIVector vectorWithX:imgSize.width/2 Y:imgSize.height/2];
         [filter setValue:centerVector forKey:kCIInputCenterKey];
-        [filter setValue:@(self.effectIntensity*5) forKey:@"inputAmount"];
+        [filter setValue:@(15.0*self.effectIntensity) forKey:kCIInputWidthKey];
+        [filter setValue:@(0.0) forKey:kCIInputAngleKey];
+        [filter setValue:@(self.effectIntensity) forKey:kCIInputSharpnessKey];
         
         CIImage *result = [filter outputImage];
         
